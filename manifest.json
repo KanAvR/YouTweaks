@@ -1,2 +1,30 @@
-
-
+{
+  "manifest_version": 3,
+  "name": "YouTweaks",
+  "version": "1.0",
+  "description": "Simple modifications to improve quality of life on youtube, mostly just removing annoying parts",
+  "icons": {
+    "48": "icons/icon.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "tubetweaks@kann",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "youtweaks.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
