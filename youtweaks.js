@@ -1,27 +1,16 @@
-// todo remove youtube getElementsByTagName
-console.log("extension loaded");
-// Blurs thumbnail images for now lol
+function thumbnailBlur() {
 
-function thumbnail_blur() {
-
-  var home_contents = document.getElementById("contents");
-
-  var thumbnails = home_contents.querySelectorAll(
-    'img:not(.ytSpecAvatarShapeImageOverlays):not(.ytSpecAvatarShapeImage)'
-  );
+  const thumbnails = document.getElementById("contents").getElementsByClassName('ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded');
 
   for (const img of thumbnails) {
-    img.style.filter = "blur(10px)"; // only works on home page  
+    img.style.filter = "blur(10px)";
   }
 }
-thumbnail_blur()
 
 const observer = new MutationObserver(() => {
-  thumbnail_blur();
+  thumbnailBlur();
 });
 
 observer.observe(document.body, { childList: true, subtree: true });
-const target = document.getElementById("contents") || document.body;
-observer.observe(target, config);
 
-// working for home page and scroll; make it work on the videos page refresh still broken 
+//works on refresh but now theres a slight dealy with blurs and sometimes it just doesnt blur
