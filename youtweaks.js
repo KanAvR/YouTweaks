@@ -1,5 +1,4 @@
 function thumbnailBlur() {
-
   const thumbnails = document.getElementById("contents").getElementsByClassName('ytCoreImageHost ytCoreImageFillParentHeight ytCoreImageFillParentWidth ytCoreImageContentModeScaleAspectFill ytCoreImageLoaded');
 
   for (const img of thumbnails) {
@@ -7,10 +6,13 @@ function thumbnailBlur() {
   }
 }
 
-const observer = new MutationObserver(() => {
+thumbnailBlur()
+
+addEventListener("scroll", () => {
   thumbnailBlur();
-});
+  console.log("wo");
+})
 
-observer.observe(document.body, { childList: true, subtree: true });
+onscroll = () => { document }
 
-//works on refresh but now theres a slight dealy with blurs and sometimes it just doesnt blur
+// blurs on scroll but breaks on page refesh
