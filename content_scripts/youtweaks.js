@@ -18,4 +18,29 @@ browser.storage.onChanged.addListener((changes) => {
   }
 });
 
-// if thumbnails are loaded after scroll is complete then it doesnt blur them
+function hideShortsButtons() { // this works but I think the implementation is very sloppy as the frist part is selecting an element and the other part is selecting an id
+  document.querySelectorAll("ytd-guide-entry-renderer").forEach(el => {
+    if (el.textContent.trim().toLowerCase().includes("shorts")) {
+      el.remove();
+    }
+  });
+
+  document.querySelectorAll("#endpoint").forEach(el => {
+    if (el.textContent.trim().toLowerCase().includes("shorts")) {
+      el.remove();
+    }
+  });
+
+}
+
+hideShortsButtons();
+const observer = new MutationObserver(() => {
+  hideShortsButtons()
+});
+
+observer.observe(document, {
+  subtree: true,
+  childList: true,
+});
+
+

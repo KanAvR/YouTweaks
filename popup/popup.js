@@ -1,9 +1,15 @@
-const toggle = document.getElementById("blurToggle");
-
+const blurToggle = document.getElementById("blurToggle");
 browser.storage.local.get("blurEnabled").then((result) => {
-  toggle.checked = result.blurEnabled === true;
+  blurToggle.checked = result.blurEnabled === true;
+});
+blurToggle.addEventListener("change", () => {
+  browser.storage.local.set({ blurEnabled: blurToggle.checked });
 });
 
-toggle.addEventListener("change", () => {
-  browser.storytCage.local.set({ blurEnabled: toggle.checked });
+const disableShortsToggle = document.getElementById("disableShortsToggle");
+browser.storage.local.get("shortsDisabled").then((result) => {
+  disableShortsToggle.checked = result.shortsDisabled === true;
+});
+disableShortsToggle.addEventListener("change", () => {
+  browser.storage.local.set({ shortsDisabled: disableShortsToggle.checked });
 });
