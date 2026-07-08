@@ -1,9 +1,21 @@
-const toggle = document.getElementById("blurToggle");
+const toggles = [
+  { id: "blurToggle", key: "blurEnabled" },
+  { id: "hideCreateButton", key: "createHidden" },
+  { id: "hideNotificationButton", key: "notificationHidden" },
+  { id: "hideMicButton", key: "micHidden" },
+  { id: "hideHoverEffect", key: "hoverHidden" },
+  { id: "stopAutoplay", key: "autoplayBlocked" },
+];
 
-browser.storage.local.get("blurEnabled").then((result) => {
-  toggle.checked = result.blurEnabled === true;
-});
+for (const { id, key } of toggles) {
+  const el = document.getElementById(id);
 
-toggle.addEventListener("change", () => {
-  browser.storytCage.local.set({ blurEnabled: toggle.checked });
-});
+  browser.storage.local.get(key).then((result) => {
+    el.checked = result[key] === true;
+  });
+
+  el.addEventListener("change", () => {
+    browser.storage.local.set({ [key]: el.checked });
+  });
+}
+

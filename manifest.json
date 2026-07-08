@@ -3,9 +3,12 @@
   "name": "youtweaks",
   "version": "1.0",
   "description": "simple modifications to improve quality of life on youtube, mostly just removing annoying parts",
-  "icons": {
-    "48": "icons/icon.png"
-  },
+   "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }, 
   "permissions": [
     "storage",
     "scripting"
@@ -20,19 +23,21 @@
       }
     }
   },
-  "action": {
-    "default_icon": "icons/icon.png",
-    "default_title": "YouTweaks",
-    "default_popup": "popup/popup.html"
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.youtube.com/*"
-      ],
-      "js": [
-        "content_scripts/youtweaks.js"
-      ]
-    }
-  ]
+"action": {
+  "default_title": "YouTweaks",
+  "default_popup": "popup/popup.html",
+  "default_icon": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+},
+"content_scripts": [
+  {
+    "matches": ["https://www.youtube.com/*"],
+    "js": ["content_scripts/youtweaks.js"],
+    "run_at": "document_start"
+  }
+ ]
 }
