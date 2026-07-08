@@ -5,27 +5,53 @@
         <title>YouTweaks</title>
         <link rel="stylesheet" href="popup.css" />
     </head>
-    <body>
-        <div class="row">
-            <span class="label">Blur thumbnails</span>
-            <label class="switch">
-                <input type="checkbox" id="blurToggle" />
-                <span class="slider round"></span>
-            </label>
+    <body bgcolor="#191B28">
+        <div class="banner-wrap">
+           <img src="../icons/youtweaks-banner-transparent.png" alt="YouTweaks" class="banner" />
         </div>
-        <div class="row">
-            <span class="label">Hide Create Button</span>
-            <label class="switch">
-                <input type="checkbox" id="hideCreateButton" />
-                <span class="slider round"></span>
-            <label>
-        </div>
-        <div class="row">
-            <span class="label">Hide Notifications Button</span>
-            <label class="switch">
-                <input type="checkbox" id="hideNotificationButton" />
-                <span class="slider round"></span>
-            </label>
+        <div class="settings">
+            <div class="row">
+                <span class="label">Blur thumbnails</span>
+                <label class="switch">
+                    <input type="checkbox" id="blurToggle" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="row">
+                <span class="label">Hide Create Button</span>
+                <label class="switch">
+                    <input type="checkbox" id="hideCreateButton" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="row">
+                <span class="label">Hide Notifications Button</span>
+                <label class="switch">
+                    <input type="checkbox" id="hideNotificationButton" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="row">
+                <span class="label">Hide Mic Button</span>
+                <label class="switch">
+                    <input type="checkbox" id="hideMicButton" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="row">
+                <span class="label">Stop thumbnail hover effect</span>
+                <label class="switch">
+                    <input type="checkbox" id="hideHoverEffect" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="row">
+                <span class="label">Stop videos autoplaying on hover</span>
+                <label class="switch">
+                    <input type="checkbox" id="stopAutoplay" />
+                    <span class="slider round"></span>
+                </label>
+            </div>
         </div>
         <script src="popup.js"></script>
     </body>

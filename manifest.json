@@ -36,7 +36,8 @@
 "content_scripts": [
   {
     "matches": ["https://www.youtube.com/*"],
-    "js": ["content_scripts/youtweaks.js"]
+    "js": ["content_scripts/youtweaks.js"],
+    "run_at": "document_start"
   }
  ]
 }

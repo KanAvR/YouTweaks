@@ -2,6 +2,9 @@ const toggles = [
   { id: "blurToggle", key: "blurEnabled" },
   { id: "hideCreateButton", key: "createHidden" },
   { id: "hideNotificationButton", key: "notificationHidden" },
+  { id: "hideMicButton", key: "micHidden" },
+  { id: "hideHoverEffect", key: "hoverHidden" },
+  { id: "stopAutoplay", key: "autoplayBlocked" },
 ];
 
 for (const { id, key } of toggles) {
