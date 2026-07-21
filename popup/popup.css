@@ -5,6 +5,96 @@
   font-style: normal;
 }
 
+body {
+  width: 340px;
+  height: 440px; 
+  margin: 0;
+  padding: 10px 14px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid #2a2d40;
+  flex-shrink: 0;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: #8a8fa3;
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 13px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: #f5f5f5;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.tab.active {
+  color: #f5f5f5;
+}
+
+.tab.active::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -3px;
+  height: 2px;
+  background-color: rgb(255, 80, 72);
+  border-radius: 2px;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3a3d52 transparent;
+  padding-right: 4px;
+}
+
+.empty-state {
+  font-family: "Geist";
+  font-weight: 700;
+  color: #8a8fa3;
+  font-size: 13px;
+  text-align: center;
+  padding: 24px 0;
+}
+
 .row {
   display: flex;
   align-items: center;
@@ -12,27 +102,23 @@
   padding: 10px 0;
   gap: 12px;
 }
-
 .label {
   font-size: 15px;
   font-weight: 600;
   flex: 1;
 }
 
-/* Toggle switch - shrink from default */
 .switch {
   position: relative;
   width: 36px;
   height: 20px;
   flex-shrink: 0;
 }
-
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -44,7 +130,6 @@
   transition: 0.2s;
   border-radius: 20px;
 }
-
 .slider:before {
   position: absolute;
   content: "";
@@ -56,11 +141,9 @@
   transition: 0.2s;
   border-radius: 50%;
 }
-
 input:checked + .slider {
   background-color: #3b82f6;
 }
-
 input:checked + .slider:before {
   transform: translateX(16px);
 }
@@ -72,12 +155,10 @@ input:checked + .slider:before {
 }
 
 .banner {
-  width: 250px;
+  width: 210px;
   height: auto;
   display: block;
-  margin-bottom: 8px;
 }
-
 .banner-wrap {
   display: flex;
   justify-content: center;

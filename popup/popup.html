@@ -6,53 +6,93 @@
         <link rel="stylesheet" href="popup.css" />
     </head>
     <body bgcolor="#191B28">
-        <div class="banner-wrap">
-           <img src="../icons/youtweaks-banner-transparent.png" alt="YouTweaks" class="banner" />
+        <div class="header">
+            <div class="banner-wrap">
+                <img src="../icons/youtweaks-banner-transparent.png" alt="YouTweaks" class="banner" />
+            </div>
+            <nav class="tabs">
+                <button class="tab active" data-tab="removals">Removals</button>
+                <button class="tab" data-tab="additions">Additions</button>
+                <button class="tab" data-tab="time-tracking">Time tracking</button>
+            </nav>
         </div>
-        <div class="settings">
-            <div class="row">
-                <span class="label">Blur thumbnails</span>
-                <label class="switch">
-                    <input type="checkbox" id="blurToggle" />
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="row">
-                <span class="label">Hide Create Button</span>
-                <label class="switch">
-                    <input type="checkbox" id="hideCreateButton" />
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="row">
-                <span class="label">Hide Notifications Button</span>
-                <label class="switch">
-                    <input type="checkbox" id="hideNotificationButton" />
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="row">
-                <span class="label">Hide Mic Button</span>
-                <label class="switch">
-                    <input type="checkbox" id="hideMicButton" />
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="row">
-                <span class="label">Stop thumbnail hover effect</span>
-                <label class="switch">
-                    <input type="checkbox" id="hideHoverEffect" />
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div class="row">
-                <span class="label">Stop videos autoplaying on hover</span>
-                <label class="switch">
-                    <input type="checkbox" id="stopAutoplay" />
-                    <span class="slider round"></span>
-                </label>
+
+        <!-- Removals tab -->
+        <div class="tab-panel active" id="tab-removals">
+            <div class="settings">
+                <div class="row">
+                    <span class="label">Blur thumbnails</span>
+                    <label class="switch">
+                        <input type="checkbox" id="blurToggle" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <span class="label">Hide Create Button</span>
+                    <label class="switch">
+                        <input type="checkbox" id="hideCreateButton" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <span class="label">Hide Notifications Button</span>
+                    <label class="switch">
+                        <input type="checkbox" id="hideNotificationButton" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <span class="label">Hide Mic Button</span>
+                    <label class="switch">
+                        <input type="checkbox" id="hideMicButton" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <span class="label">Stop thumbnail hover effect</span>
+                    <label class="switch">
+                        <input type="checkbox" id="hideHoverEffect" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <span class="label">Stop videos autoplaying on hover</span>
+                    <label class="switch">
+                        <input type="checkbox" id="stopAutoplay" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <span class="label">Hide recomendation bar</span>
+                    <label class="switch">
+                        <input type="checkbox" id="hideRecomendationBar" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <span class="label">Hide gemini slop</span>
+                    <label class="switch">
+                        <input type="checkbox" id="hideGeminiStuff" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
             </div>
         </div>
+
+        <!-- Additions tab -->
+        <div class="tab-panel" id="tab-additions">
+            <div class="settings">
+                <p class="empty-state">Nothing</p>
+            </div>
+        </div>
+
+        <!-- Time tracking tab -->
+        <div class="tab-panel" id="tab-time-tracking">
+            <div class="settings">
+                <p class="empty-state">Nothing</p>
+            </div>
+        </div>
+
         <script src="popup.js"></script>
     </body>
 </html>

@@ -5,6 +5,8 @@ const toggles = [
   { id: "hideMicButton", key: "micHidden" },
   { id: "hideHoverEffect", key: "hoverHidden" },
   { id: "stopAutoplay", key: "autoplayBlocked" },
+  { id: "hideRecomendationBar", key: "recomendationBarHidden" },
+  { id: "hideGeminiStuff", key: "geminiStuffHidden" },
 ];
 
 for (const { id, key } of toggles) {
@@ -18,4 +20,14 @@ for (const { id, key } of toggles) {
     browser.storage.local.set({ [key]: el.checked });
   });
 }
+
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+    document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
+ 
+    tab.classList.add("active");
+    document.getElementById("tab-" + tab.dataset.tab).classList.add("active");
+  });
+});
 
