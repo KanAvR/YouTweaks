@@ -1,0 +1,14 @@
+html.yt-blur ytd-thumbnail img.ytCoreImageHost,
+html.yt-blur yt-thumbnail-view-model img.ytCoreImageHost,
+html.yt-blur ytd-playlist-thumbnail img.ytCoreImageHost,
+html.yt-blur .ytp-videowall-still-image,
+html.yt-blur ytd-moving-thumbnail-renderer img {
+  filter: blur(var(--ytweaks-blur-amount, 10px)) !important;
+}
+
+html.yt-noautoplay ytd-video-preview,
+html.yt-noautoplay #video-preview,
+html.yt-noautoplay ytd-moving-thumbnail-renderer,
+html.yt-noautoplay ytd-inline-preview-thumbnail-renderer,
+html.yt-noautoplay yt-inline-player-view-model { display: none !important; }
+

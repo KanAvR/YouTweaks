@@ -1,13 +1,32 @@
-const style = document.createElement("style");
-style.textContent = `
-  html.yt-blur ytd-thumbnail img.ytCoreImageHost,
-  html.yt-blur yt-thumbnail-view-model img.ytCoreImageHost,
-  html.yt-blur ytd-playlist-thumbnail img.ytCoreImageHost,
-  html.yt-blur .ytp-videowall-still-image,
-  html.yt-blur ytd-moving-thumbnail-renderer img {
-    filter: blur(10px) !important;
-  }
-`; document.documentElement.appendChild(style);
+const EYE_SVG = `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 5c-5 0-9.3 3.1-11 7 1.7 3.9 6 7 11 7s9.3-3.1 11-7c-1.7-3.9-6-7-11-7zm0 11.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 0 9zm0-7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>`;
+
+const CAL_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17 3V1h-2v2H9V1H7v2H4a1 1 0 0 0-1 1v17a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-3zM5 8h14v12H5V8z"/></svg>`;
+
+const THUMB_HOSTS = [
+  "ytd-thumbnail",
+  "ytd-rich-item-renderer",
+  "ytd-video-renderer",
+  "ytd-compact-video-renderer",
+  "ytd-grid-video-renderer",
+  "ytd-playlist-video-renderer",
+  "ytd-reel-item-renderer",
+  "yt-lockup-view-model",
+  "yt-thumbnail-view-model",
+  "yt-collection-thumbnail-view-model",
+  "a#thumbnail",
+].join(", ");
+
+const HOVER_EVENTS = [
+  "pointerover",
+  "pointerenter",
+  "pointermove",
+  "mouseover",
+  "mouseenter",
+  "mousemove",
+];
+
+const KEEP_VIDEO =
+  "ytd-watch-flexy #player, ytd-miniplayer, #shorts-player, ytd-reel-video-renderer";
 
 function thumbnailBlur(enabled) {
   document
@@ -23,6 +42,8 @@ const state = {
   autoplayBlocked: false,
   recomendationBarHidden: false,
   geminiStuffHidden: false,
+  videoInfoMoved: false,
+  hideProgressbarOnRecomendations: false,
 };
 
 function setButtonHidden(ariaLabel, hidden) {
@@ -49,7 +70,19 @@ function stopHoverEffect(hidden) { // title color still changes, doesnt work on 
   });
 
 }
+function hideProgressbarOnRecomendations(hidden) {
+  document
+    .querySelectorAll('.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment')
+    .forEach((el) => {
+    el.style.display = hidden ? "none" : "";
+  });
 
+   document
+    .querySelectorAll('.ytThumbnailOverlayProgressBarHostWatchedProgressBar.ytThumbnailOverlayProgressBarHostUseLegacyBar')
+    .forEach((el) => {
+    el.style.display = hidden ? "none" : "";
+  }); 
+}
 function hideGeminiStuff(hidden) {
   document
     .querySelectorAll("yt-video-description-youchat-section-view-model")
@@ -74,17 +107,29 @@ function hideGeminiStuff(hidden) {
       }
     });
 }
-// autoplay works on chanel page also blur, blurs the th
-// could make one function for hideNotificationPanel and stopHoverEffect since its the same thing
+
+
+function hoverGuard(e) {
+  if (!state.autoplayBlocked) return;
+  const t = e.target;
+  if (t instanceof Element && t.closest(THUMB_HOSTS)) {
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }
+}
+
+for (const type of HOVER_EVENTS) {
+  document.addEventListener(type, hoverGuard, { capture: true });
+}
+
 function stopAutoplayOnHover(hidden) {
   if (!hidden) return;
-  document
-    .querySelectorAll(
-    'ytd-video-preview, #video-preview, ytd-moving-thumbnail-renderer, ' +
-    '#inline-preview-player, ytd-inline-preview-thumbnail-renderer, yt-inline-player-view-model'
-  ).forEach(el => {
-    el.querySelectorAll('video').forEach(v => { v.pause(); v.src = ''; });
-    el.remove();
+  document.querySelectorAll("video").forEach((v) => {
+    if (v.closest(KEEP_VIDEO)) return;
+    if (v.paused && !v.currentSrc && !v.getAttribute("src")) return;
+    v.pause();
+    v.removeAttribute("src");
+    v.load();
   });
 }
 
@@ -122,7 +167,12 @@ function hideRecomendationBar(hidden) {
   });
 }
 
+function moveVideoInfo(enabled) {
+  
+}
+
 function applyAll() {
+  document.documentElement.classList.toggle("yt-noautoplay", state.autoplayBlocked);
   setButtonHidden("Create", state.createHidden);
   setButtonHidden("Notifications", state.notificationHidden);
   setButtonHidden("Search with your voice", state.micHidden);
@@ -131,10 +181,23 @@ function applyAll() {
   stopAutoplayOnHover(state.autoplayBlocked);
   hideRecomendationBar(state.recomendationBarHidden);
   hideGeminiStuff(state.geminiStuffHidden);
+  moveVideoInfo(state.videoInfoMoved);
+  hideProgressbarOnRecomendations(state.progressbarHidden);
+}
+
+let applyScheduled = false;
+
+function scheduleApply() {
+  if (applyScheduled) return;
+  applyScheduled = true;
+  requestAnimationFrame(() => {
+    applyScheduled = false;
+    applyAll();
+  });
 }
 
 browser.storage.local
-  .get(["blurEnabled", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "autoplayBlocked", "recomendationBarHidden", "geminiStuffHidden"])
+  .get(["blurEnabled", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "autoplayBlocked", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden"])
   .then((result) => {
     thumbnailBlur(result.blurEnabled === true);
     state.createHidden = result.createHidden === true;
@@ -144,10 +207,12 @@ browser.storage.local
     state.autoplayBlocked = result.autoplayBlocked === true;
     state.recomendationBarHidden = result.recomendationBarHidden === true;
     state.geminiStuffHidden = result.geminiStuffHidden === true;
+    state.videoInfoMoved = result.videoInfoMoved === true;
+    state.progressbarHidden = result.progressbarHidden === true;
 
     const startObserver = () => {
       applyAll();
-      new MutationObserver(applyAll).observe(document.body, {
+      new MutationObserver(scheduleApply).observe(document.body, {
         childList: true,
         subtree: true,
       });
@@ -173,7 +238,7 @@ browser.storage.onChanged.addListener((changes) => {
 });
 
 // TODO: stuff before shipping
-// 1. polish the whole project; bug fixes 
+// 1. polish the whole project; bug fixes
 // 2. add video speed changes
-// block the store, yt games 
-// add a timer to track how long you are on yt for 
+// block the store, yt games
+// better descirptions 
