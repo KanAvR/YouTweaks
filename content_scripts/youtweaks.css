@@ -12,3 +12,42 @@ html.yt-noautoplay ytd-moving-thumbnail-renderer,
 html.yt-noautoplay ytd-inline-preview-thumbnail-renderer,
 html.yt-noautoplay yt-inline-player-view-model { display: none !important; }
 
+html.yt-moveinfo ytd-watch-metadata #description #info-container {
+  display: none !important;
+}
+
+#ytweaks-info {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 12px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 18px;
+  background: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.1));
+  color: var(--yt-spec-text-primary);
+  font-family: "Roboto", "Arial", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2rem;
+  white-space: nowrap;
+}
+
+.ytweaks-info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--yt-spec-text-primary);
+}
+
+.ytweaks-info-item svg {
+  display: block;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.ytweaks-info-divider {
+  width: 1px;
+  height: 24px;
+  background: var(--yt-spec-outline, rgba(255, 255, 255, 0.2));
+}

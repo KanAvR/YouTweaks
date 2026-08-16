@@ -7,13 +7,15 @@
 
 body {
   width: 340px;
-  height: 440px; 
+  height: 500px;
   margin: 0;
   padding: 10px 14px;
   box-sizing: border-box;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  font-family: "Geist";
+  font-weight: 700;
 }
 
 *,
@@ -162,4 +164,295 @@ input:checked + .slider:before {
 .banner-wrap {
   display: flex;
   justify-content: center;
+}
+
+/* ── Time tracking tab ──────────────────────────────────────────────────── */
+
+/* Sub-rows: hidden by default, shown when the parent toggle is on */
+.sub-row {
+  display: none;
+  align-items: center;
+  padding: 2px 0 10px;
+  gap: 8px;
+}
+
+.sub-row.visible {
+  display: flex;
+}
+
+.limit-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.limit-input {
+  width: 52px;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #f5f5f5;
+  font-size: 14px;
+  font-family: "Geist";
+  text-align: center;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.limit-input:focus {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.limit-input::-webkit-inner-spin-button,
+.limit-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.limit-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.limit-sep {
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 12px;
+  color: #555;
+}
+
+/* Bedtime time picker */
+.time-input {
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #f5f5f5;
+  font-size: 14px;
+  font-family: "Geist";
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  color-scheme: dark;
+}
+
+.time-input:focus {
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Stats ──────────────────────────────────────────────────────────────── */
+
+.stats-section {
+  padding: 10px 0 6px;
+  border-top: 1px solid #2a2d40;
+  margin-top: 6px;
+}
+
+.stats-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.stats-title {
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 13px;
+  color: #f5f5f5;
+}
+
+.period-btns {
+  display: flex;
+  gap: 3px;
+}
+
+.period-btn {
+  background: none;
+  border: none;
+  color: #555;
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 11px;
+  padding: 3px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 0.1s, background 0.1s;
+}
+
+.period-btn:hover {
+  color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.period-btn.active {
+  color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.bar-graph {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 72px;
+  margin-bottom: 6px;
+}
+
+.bar-col {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  height: 100%;
+}
+
+.bar-tooltip {
+  display: none;
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(12, 12, 12, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-family: "Geist";
+  font-size: 10px;
+  color: #f5f5f5;
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.bar-col:hover .bar-tooltip {
+  display: block;
+}
+
+.bar-fill {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 2px 2px 0 0;
+  min-height: 0;
+  transition: height 0.25s ease;
+}
+
+.bar-today .bar-fill {
+  background: #ff4444;
+}
+
+.bar-label {
+  font-size: 9px;
+  color: #3a3a3a;
+  margin-top: 3px;
+  font-family: "Geist";
+  font-weight: 700;
+  line-height: 1;
+  min-height: 11px;
+}
+
+.bar-today .bar-label {
+  color: #8a8fa3;
+}
+
+.stats-avg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 13px;
+  color: #f5f5f5;
+  text-align: center;
+  padding-bottom: 4px;
+}
+
+.above-avg-badge {
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 11px;
+  color: #4ade80;
+}
+
+/* ── Stats summary (today + total) ─────────────────────────────────────── */
+
+.stats-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 8px 0 14px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.stat-label {
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 10px;
+  color: #8a8fa3;
+}
+
+.stat-value-mono {
+  font-family: "Geist";
+  font-size: 22px;
+  font-weight: 700;
+  color: #f5f5f5;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-value-dur {
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 22px;
+  color: #f5f5f5;
+  line-height: 1.1;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: #2a2d40;
+  align-self: center;
+}
+
+/* ── Utility ────────────────────────────────────────────────────────────── */
+
+.hidden {
+  display: none !important;
+}
+
+/* ── Snooze row (normal style, no red border) ───────────────────────────── */
+
+.snooze-action-btn {
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  color: #f5f5f5;
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.snooze-action-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.snooze-meta {
+  font-family: "Geist";
+  font-weight: 700;
+  font-size: 11px;
+  color: #8a8fa3;
+  padding-bottom: 4px;
+  min-height: 0;
 }
