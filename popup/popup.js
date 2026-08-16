@@ -3,13 +3,12 @@ const toggles = [
   { id: "hideCreateButton",                key: "createHidden" },
   { id: "hideNotificationButton",          key: "notificationHidden" },
   { id: "hideMicButton",                   key: "micHidden" },
-  { id: "hideHoverEffect",                 key: "hoverHidden" },
-  { id: "stopAutoplay",                    key: "autoplayBlocked" },
+  { id: "stopHoverEffects",                key: "hoverHidden" },
   { id: "hideRecomendationBar",            key: "recomendationBarHidden" },
   { id: "hideGeminiStuff",                 key: "geminiStuffHidden" },
   { id: "moveVideoInfo",                   key: "videoInfoMoved" },
   { id: "hideProgressbarOnRecomendations", key: "progressbarHidden" },
-  // timeTracking handled separately below
+
 ];
 
 for (const { id, key } of toggles) {
@@ -22,7 +21,6 @@ for (const { id, key } of toggles) {
   });
 }
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
 
 const pad = (n) => String(n).padStart(2, "0");
 
@@ -70,7 +68,6 @@ function isBedtimeNow(enabled, startStr, endStr) {
     : nowM >= startM || nowM < endM;
 }
 
-// ── Track-time toggle + conditional sections ──────────────────────────────────
 
 const timeTrackingEl  = document.getElementById("timeTracking");
 const trackingSection = document.getElementById("trackingSection");
@@ -91,7 +88,6 @@ timeTrackingEl.addEventListener("change", () => {
   setTrackingVisible(timeTrackingEl.checked);
 });
 
-// ── Time display + snooze visibility (refreshed every second) ─────────────────
 
 const timeDisplay = document.getElementById("timeDisplay");
 
@@ -119,7 +115,6 @@ browser.storage.onChanged.addListener((changes) => {
   if (changes.watchTime || changes.snoozeUntilMs) refreshUI();
 });
 
-// ── Snooze button ─────────────────────────────────────────────────────────────
 
 document.getElementById("snoozeBtn").addEventListener("click", () => {
   const minutes = parseInt(document.getElementById("snoozeMinutes").value) || 0;
@@ -127,7 +122,6 @@ document.getElementById("snoozeBtn").addEventListener("click", () => {
   browser.storage.local.set({ snoozeUntilMs: Date.now() + minutes * 60_000 });
 });
 
-// ── Daily limit ───────────────────────────────────────────────────────────────
 
 const limitToggle  = document.getElementById("timeLimitToggle");
 const limitRow     = document.getElementById("limitRow");
@@ -169,8 +163,6 @@ function saveLimit() {
 limitHours.addEventListener("change", saveLimit);
 limitMinutes.addEventListener("change", saveLimit);
 
-// ── Bedtime ───────────────────────────────────────────────────────────────────
-
 const bedtimeToggle  = document.getElementById("bedtimeEnabled");
 const bedtimeRow     = document.getElementById("bedtimeRow");
 const bedtimeInput   = document.getElementById("bedtimeTime");
@@ -198,7 +190,6 @@ bedtimeEndInput.addEventListener("change", () => {
   browser.storage.local.set({ bedtimeEndTime: bedtimeEndInput.value });
 });
 
-// ── Stats ─────────────────────────────────────────────────────────────────────
 
 let currentPeriod = "week";
 
@@ -233,7 +224,6 @@ function renderStats() {
       const label   = currentPeriod === "week"
         ? dayAbbr[date.getDay()]
         : (idx % 7 === 0 ? date.getDate() : "");
-      // tooltip shows Xh Xm, no seconds
       const tooltip = seconds > 0
         ? `<div class="bar-tooltip">${fmtDuration(seconds)}</div>` : "";
       return `<div class="bar-col${isToday ? " bar-today" : ""}">
@@ -263,7 +253,6 @@ browser.storage.onChanged.addListener((changes) => {
 
 renderStats();
 
-// ── Tabs ──────────────────────────────────────────────────────────────────────
 
 document.querySelectorAll(".tab").forEach((tab) => {
   tab.addEventListener("click", () => {

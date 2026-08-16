@@ -1,5 +1,3 @@
-// timeTracker.js — masthead badge + daily limit/bedtime blocking.
-// Self-starting IIFE — add to manifest content_scripts, nothing else needed.
 (() => {
   "use strict";
 
@@ -10,12 +8,11 @@
   const STORAGE_KEY     = "watchTime";
   const HISTORY_KEY     = "ytHistory";
   const ENABLED_KEY     = "timeTrackingEnabled";
-  const LIMIT_KEY       = "watchTimeLimit";      // seconds; 0 = disabled
+  const LIMIT_KEY       = "watchTimeLimit";
   const BEDTIME_EN_KEY  = "bedtimeEnabled";
-  const BEDTIME_KEY     = "bedtimeTime";         // "HH:MM" start
-  const BEDTIME_END_KEY = "bedtimeEndTime";      // "HH:MM" end
-  const SNOOZE_UNTIL_KEY = "snoozeUntilMs";      // ms timestamp set by popup
-
+  const BEDTIME_KEY     = "bedtimeTime";
+  const BEDTIME_END_KEY = "bedtimeEndTime";
+  const SNOOZE_UNTIL_KEY = "snoozeUntilMs";
   const TICK_MS    = 1000;
   const FLUSH_MS   = 5000;
   const MAX_GAP_MS = 5000;
@@ -32,9 +29,7 @@
   let pendingMs      = 0;
   let limitSeconds   = 0;
   let bedtimeEnabled  = false;
-  let bedtimeTime     = "";  // block start "HH:MM"
-  let bedtimeEndTime  = "";  // block end   "HH:MM"
-  let snoozeUntil    = 0;   // ms timestamp; 0 = not snoozed
+  let bedtimeTime     = "";
   let lastSampleAt   = 0;
   let lastFlushAt    = 0;
   let tickHandle     = null;
@@ -72,13 +67,10 @@
     const nowM = now.getHours() * 60 + now.getMinutes();
     const startM = sh * 60 + sm;
     const endM   = eh * 60 + em;
-    // handles both same-day (14:00–18:00) and overnight (22:00–08:00) ranges
     return startM <= endM
       ? nowM >= startM && nowM < endM
       : nowM >= startM || nowM < endM;
   }
-
-  // ── Badge ──────────────────────────────────────────────────────────────────
 
   function findLogoElement() {
     const light = document.querySelector("ytd-masthead ytd-topbar-logo-renderer");
@@ -127,7 +119,6 @@
     if (badgeEl) { badgeEl.remove(); badgeEl = null; }
   }
 
-  // ── Block overlay ──────────────────────────────────────────────────────────
 
   function pauseVideos() {
     document.querySelectorAll("video").forEach((v) => {
@@ -173,7 +164,7 @@
   function showBlock(reason = "limit") {
     if (blockEl?.isConnected) return;
     pauseVideos();
-    removeBadge(); // hide badge behind the block overlay — re-shown on next tick after snooze
+    removeBadge();
     if (document.body) document.body.style.overflow = "hidden";
     buildBlockPage(reason);
     document.documentElement.append(blockEl);
@@ -198,10 +189,8 @@
     }
   }
 
-  // ── Core tracking ──────────────────────────────────────────────────────────
-
   function isCounting() {
-    if (blockEl?.isConnected) return false; // don't count while blocked
+    if (blockEl?.isConnected) return false;
     if (document.visibilityState !== "visible") return false;
     if (!document.hasFocus()) return false;
     if (!COUNT_ONLY_WHILE_PLAYING) return true;
@@ -319,8 +308,6 @@
     hideBlock();
   }
 
-  // ── Event listeners ────────────────────────────────────────────────────────
-
   document.addEventListener("visibilitychange", () => {
     lastSampleAt = Date.now();
     if (document.visibilityState !== "visible") flush();
@@ -352,7 +339,6 @@
       bedtimeEndTime = changes[BEDTIME_END_KEY].newValue || "";
       checkBlock();
     }
-    // Snooze set by popup — apply immediately.
     if (changes[SNOOZE_UNTIL_KEY] !== undefined) {
       snoozeUntil = Number(changes[SNOOZE_UNTIL_KEY].newValue) || 0;
       checkBlock();

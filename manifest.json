@@ -37,7 +37,8 @@
   {
     "matches": ["https://www.youtube.com/*"],
     "js": ["content_scripts/timetracker.js",
-           "content_scripts/youtweaks.js"],
+           "content_scripts/youtweaks.js",
+           "content_scripts/videometa.js"],
     "css": ["content_scripts/youtweaks.css"], 
     "run_at": "document_start"
   }

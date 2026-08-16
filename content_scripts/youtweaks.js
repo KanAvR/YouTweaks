@@ -39,7 +39,6 @@ const state = {
   notificationHidden: false,
   micHidden: false,
   hoverHidden: false,
-  autoplayBlocked: false,
   recomendationBarHidden: false,
   geminiStuffHidden: false,
   videoInfoMoved: false,
@@ -62,13 +61,23 @@ function hideNotificationPanel(hidden) {
   });
 }
 
-function stopHoverEffect(hidden) { // title color still changes, doesnt work on shorts
+function stopHoverEffects(hidden) { // title color still changes, doesnt work on shorts
+  // hide the hover feedback overlay
   document
     .querySelectorAll(".ytSpecTouchFeedbackShapeHoverEffect")
     .forEach((el) => {
     el.style.display = hidden ? "none" : "";
   });
 
+  // kill preview videos that already started playing
+  if (!hidden) return;
+  document.querySelectorAll("video").forEach((v) => {
+    if (v.closest(KEEP_VIDEO)) return;
+    if (v.paused && !v.currentSrc && !v.getAttribute("src")) return;
+    v.pause();
+    v.removeAttribute("src");
+    v.load();
+  });
 }
 function hideProgressbarOnRecomendations(hidden) {
   document
@@ -110,7 +119,7 @@ function hideGeminiStuff(hidden) {
 
 
 function hoverGuard(e) {
-  if (!state.autoplayBlocked) return;
+  if (!state.hoverHidden) return;
   const t = e.target;
   if (t instanceof Element && t.closest(THUMB_HOSTS)) {
     e.stopPropagation();
@@ -120,17 +129,6 @@ function hoverGuard(e) {
 
 for (const type of HOVER_EVENTS) {
   document.addEventListener(type, hoverGuard, { capture: true });
-}
-
-function stopAutoplayOnHover(hidden) {
-  if (!hidden) return;
-  document.querySelectorAll("video").forEach((v) => {
-    if (v.closest(KEEP_VIDEO)) return;
-    if (v.paused && !v.currentSrc && !v.getAttribute("src")) return;
-    v.pause();
-    v.removeAttribute("src");
-    v.load();
-  });
 }
 
 function hideRecomendationBar(hidden) {
@@ -167,22 +165,17 @@ function hideRecomendationBar(hidden) {
   });
 }
 
-function moveVideoInfo(enabled) {
-  
-}
-
 function applyAll() {
-  document.documentElement.classList.toggle("yt-noautoplay", state.autoplayBlocked);
+  document.documentElement.classList.toggle("yt-noautoplay", state.hoverHidden);
   setButtonHidden("Create", state.createHidden);
   setButtonHidden("Notifications", state.notificationHidden);
   setButtonHidden("Search with your voice", state.micHidden);
   hideNotificationPanel(state.notificationHidden);
-  stopHoverEffect(state.hoverHidden);
-  stopAutoplayOnHover(state.autoplayBlocked);
+  stopHoverEffects(state.hoverHidden);
   hideRecomendationBar(state.recomendationBarHidden);
   hideGeminiStuff(state.geminiStuffHidden);
-  moveVideoInfo(state.videoInfoMoved);
   hideProgressbarOnRecomendations(state.progressbarHidden);
+  // moveVideoInfo is handled by videometa.js
 }
 
 let applyScheduled = false;
@@ -197,14 +190,13 @@ function scheduleApply() {
 }
 
 browser.storage.local
-  .get(["blurEnabled", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "autoplayBlocked", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden"])
+  .get(["blurEnabled", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden"])
   .then((result) => {
     thumbnailBlur(result.blurEnabled === true);
     state.createHidden = result.createHidden === true;
     state.notificationHidden = result.notificationHidden === true;
     state.micHidden = result.micHidden === true;
     state.hoverHidden = result.hoverHidden === true;
-    state.autoplayBlocked = result.autoplayBlocked === true;
     state.recomendationBarHidden = result.recomendationBarHidden === true;
     state.geminiStuffHidden = result.geminiStuffHidden === true;
     state.videoInfoMoved = result.videoInfoMoved === true;
