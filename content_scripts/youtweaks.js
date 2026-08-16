@@ -61,15 +61,13 @@ function hideNotificationPanel(hidden) {
   });
 }
 
-function stopHoverEffects(hidden) { // title color still changes, doesnt work on shorts
-  // hide the hover feedback overlay
+function stopHoverEffects(hidden) {
   document
     .querySelectorAll(".ytSpecTouchFeedbackShapeHoverEffect")
     .forEach((el) => {
     el.style.display = hidden ? "none" : "";
   });
 
-  // kill preview videos that already started playing
   if (!hidden) return;
   document.querySelectorAll("video").forEach((v) => {
     if (v.closest(KEEP_VIDEO)) return;
@@ -90,7 +88,7 @@ function hideProgressbarOnRecomendations(hidden) {
     .querySelectorAll('.ytThumbnailOverlayProgressBarHostWatchedProgressBar.ytThumbnailOverlayProgressBarHostUseLegacyBar')
     .forEach((el) => {
     el.style.display = hidden ? "none" : "";
-  }); 
+  });
 }
 function hideGeminiStuff(hidden) {
   document
@@ -175,7 +173,6 @@ function applyAll() {
   hideRecomendationBar(state.recomendationBarHidden);
   hideGeminiStuff(state.geminiStuffHidden);
   hideProgressbarOnRecomendations(state.progressbarHidden);
-  // moveVideoInfo is handled by videometa.js
 }
 
 let applyScheduled = false;
@@ -233,4 +230,4 @@ browser.storage.onChanged.addListener((changes) => {
 // 1. polish the whole project; bug fixes
 // 2. add video speed changes
 // block the store, yt games
-// better descirptions 
+// better descirptions
