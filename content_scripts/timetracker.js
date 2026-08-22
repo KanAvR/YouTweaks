@@ -30,6 +30,8 @@
   let limitSeconds   = 0;
   let bedtimeEnabled  = false;
   let bedtimeTime     = "";
+  let bedtimeEndTime  = "";
+  let snoozeUntil     = 0;
   let lastSampleAt   = 0;
   let lastFlushAt    = 0;
   let tickHandle     = null;

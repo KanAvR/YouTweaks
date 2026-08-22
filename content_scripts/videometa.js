@@ -51,6 +51,14 @@
   }
 
 
+  function looksLikeDate(s) {
+    return (
+      /\bago\b|just now|premiere|stream|\blive\b/i.test(s) ||
+      /(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d{1,2},?\s+\d{4}/i.test(s) ||
+      /\b\d{1,2}\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\.?\s+\d{4}\b/i.test(s)
+    );
+  }
+
   function getExactTooltipData() {
     const tip = document.querySelector("ytd-watch-info-text tp-yt-paper-tooltip");
     if (!tip) return null;
@@ -59,8 +67,8 @@
     const parts = text.split("•").map(p => p.trim()).filter(Boolean);
     let viewsExact = null, dateExact = null;
     for (const part of parts) {
-      if (/views?/i.test(part)) viewsExact = part;
-      else if (/[a-z]/i.test(part)) dateExact = part;
+      if (!viewsExact && /views?/i.test(part)) viewsExact = part;
+      else if (!dateExact && looksLikeDate(part)) dateExact = part;
     }
     return { viewsExact, dateExact };
   }
@@ -77,9 +85,9 @@
 
     let viewsRaw = null, dateRaw = null;
     for (const part of parts) {
-      if (/views?/i.test(part)) {
+      if (!viewsRaw && /views?/i.test(part)) {
         viewsRaw = part.replace(/views?/gi, "").trim();
-      } else if (/ago|premiere|stream|live/i.test(part) || /[a-z]/i.test(part)) {
+      } else if (!dateRaw && looksLikeDate(part)) {
         dateRaw = part;
       }
     }
