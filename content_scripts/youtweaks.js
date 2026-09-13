@@ -29,9 +29,11 @@ const KEEP_VIDEO =
   "ytd-watch-flexy #player, ytd-miniplayer, #shorts-player, ytd-reel-video-renderer";
 
 function thumbnailBlur(enabled) {
-  document
-    .documentElement.classList
-    .toggle("yt-blur", enabled === true);
+  document.documentElement.classList.toggle("yt-blur", enabled === true);
+}
+
+function hideShorts(enabled) {
+  document.documentElement.classList.toggle("yt-no-shorts", enabled === true);
 }
 
 const state = {
@@ -187,9 +189,10 @@ function scheduleApply() {
 }
 
 browser.storage.local
-  .get(["blurEnabled", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden"])
+  .get(["blurEnabled", "shortsHidden", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden"])
   .then((result) => {
     thumbnailBlur(result.blurEnabled === true);
+    hideShorts(result.shortsHidden === true);
     state.createHidden = result.createHidden === true;
     state.notificationHidden = result.notificationHidden === true;
     state.micHidden = result.micHidden === true;
@@ -217,6 +220,9 @@ browser.storage.local
 browser.storage.onChanged.addListener((changes) => {
   if (changes.blurEnabled !== undefined) {
     thumbnailBlur(changes.blurEnabled.newValue === true);
+  }
+  if (changes.shortsHidden !== undefined) {
+    hideShorts(changes.shortsHidden.newValue === true);
   }
   for (const key of Object.keys(state)) {
     if (changes[key] !== undefined) {

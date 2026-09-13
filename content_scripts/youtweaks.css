@@ -6,6 +6,12 @@ html.yt-blur ytd-moving-thumbnail-renderer img {
   filter: blur(var(--ytweaks-blur-amount, 10px)) !important;
 }
 
+html.yt-no-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+html.yt-no-shorts ytd-reel-shelf-renderer,
+html.yt-no-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
+html.yt-no-shorts ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+html.yt-no-shorts ytd-reel-item-renderer { display: none !important; }
+
 html.yt-noautoplay ytd-video-preview,
 html.yt-noautoplay #video-preview,
 html.yt-noautoplay ytd-moving-thumbnail-renderer,

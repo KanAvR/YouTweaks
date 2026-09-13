@@ -8,6 +8,7 @@ const toggles = [
   { id: "hideGeminiStuff",                 key: "geminiStuffHidden" },
   { id: "moveVideoInfo",                   key: "videoInfoMoved" },
   { id: "hideProgressbarOnRecomendations", key: "progressbarHidden" },
+  { id: "hideShorts",                      key: "shortsHidden" },
 
 ];
 
