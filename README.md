@@ -2,11 +2,16 @@
   <img src="icons/youtweaks-banner-transparent.png" alt="YouTweaks" width="400" />
 </p>
 
-## Add extention
+## Install
 
-[Add to Firefox](https://addons.mozilla.org/en-US/firefox/addon/youtweaks/) 
+**Chrome / Edge / Brave:**
+1. Download [`youtweaks-v1.0.zip`](https://github.com/KanAvR/YouTweaks/releases/download/v1.0/youtweaks-v1.0.zip) from the latest release.
+2. Unzip the file.
+3. Go to `chrome://extensions` → enable **Developer mode** → click **Load unpacked** → select the unzipped folder.
 
-Extension isnt approved yet so the link wont work.
+**Firefox:**
+1. Download and unzip the release zip.
+2. Go to `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → select `manifest.json`.
 
 ## Features
 
@@ -40,8 +45,6 @@ Extension isnt approved yet so the link wont work.
 | Daily Time Limit | Sets a maximum daily YouTube usage |
 | Bedtime Cutoff | Blocks YouTube during configured hours |
 
-#Screenshots
-add
 ## Permissions
 
 - `storage` to save user preferences and watch time data
