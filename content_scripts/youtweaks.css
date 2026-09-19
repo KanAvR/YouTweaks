@@ -6,11 +6,32 @@ html.yt-blur ytd-moving-thumbnail-renderer img {
   filter: blur(var(--ytweaks-blur-amount, 10px)) !important;
 }
 
-html.yt-no-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
-html.yt-no-shorts ytd-reel-shelf-renderer,
+/* Sidebar & mini-guide Shorts links */
 html.yt-no-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
 html.yt-no-shorts ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
-html.yt-no-shorts ytd-reel-item-renderer { display: none !important; }
+
+/* Feed: Shorts shelf / section */
+html.yt-no-shorts ytd-reel-shelf-renderer,
+html.yt-no-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+html.yt-no-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
+
+/* Feed: individual reel items (Shorts cards in any container) */
+html.yt-no-shorts ytd-reel-item-renderer,
+
+/* Feed: Shorts inside a rich item (inline Shorts while scrolling) */
+html.yt-no-shorts ytd-rich-item-renderer:has(ytd-reel-item-renderer),
+html.yt-no-shorts ytd-rich-item-renderer:has(a[href*="/shorts/"]),
+
+/* Feed: Shorts shelf inside secondary / related results */
+html.yt-no-shorts ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer,
+html.yt-no-shorts ytd-watch-next-secondary-results-renderer ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
+
+/* Chips / tabs: Shorts filter chip */
+html.yt-no-shorts yt-chip-cloud-chip-renderer:has(a[href="/shorts"]),
+
+/* Feed: any rich section that only contains Shorts */
+html.yt-no-shorts ytd-rich-section-renderer:has(a[href*="/shorts/"]),
+html.yt-no-shorts ytd-rich-section-renderer:has(ytd-rich-item-renderer:has(a[href*="/shorts/"])) { display: none !important; }
 
 html.yt-noautoplay ytd-video-preview,
 html.yt-noautoplay #video-preview,
