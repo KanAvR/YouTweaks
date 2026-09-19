@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "youtweaks",
   "version": "1.0",
-  "description": "simple modifications to improve quality of life on youtube, mostly just removing annoying parts",
+  "description": "Take control of your YouTube experience. YouTweaks lets you hide distracting elements like Shorts, thumbnails, hover previews, recommendation bars, AI features, merchandise shelves, and more. Includes a daily time tracker with usage limits and bedtime cutoffs to help you stay focused.",
    "icons": {
     "16": "icons/icon16.png",
     "32": "icons/icon32.png",
