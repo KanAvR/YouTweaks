@@ -45,6 +45,8 @@ const state = {
   geminiStuffHidden: false,
   videoInfoMoved: false,
   hideProgressbarOnRecomendations: false,
+  gamesHidden: false,
+  merchStoreHidden: false,
 };
 
 function setButtonHidden(ariaLabel, hidden) {
@@ -117,6 +119,65 @@ function hideGeminiStuff(hidden) {
     });
 }
 
+function hideGames(hidden) {
+  // Sidebar guide entry
+  document
+    .querySelectorAll('ytd-guide-entry-renderer:has(a[title="Games"])')
+    .forEach((el) => {
+      el.style.display = hidden ? "none" : "";
+    });
+
+  // Mini guide entry (compact sidebar)
+  document
+    .querySelectorAll('ytd-mini-guide-entry-renderer:has(a[title="Games"])')
+    .forEach((el) => {
+      el.style.display = hidden ? "none" : "";
+    });
+
+  // Games shelf on homepage
+  document
+    .querySelectorAll("ytd-rich-section-renderer:has(ytd-gaming-section-renderer)")
+    .forEach((el) => {
+      el.style.display = hidden ? "none" : "";
+    });
+
+  // Top bar tab / chip for Games
+  document
+    .querySelectorAll('yt-chip-cloud-chip-renderer:has(a[href="/gaming"])')
+    .forEach((el) => {
+      el.style.display = hidden ? "none" : "";
+    });
+}
+
+function hideMerchStore(hidden) {
+  // Merch shelf below videos
+  document
+    .querySelectorAll("ytd-merchandise-shelf-renderer")
+    .forEach((el) => {
+      el.style.display = hidden ? "none" : "";
+    });
+
+  // Shopping shelf / ads
+  document
+    .querySelectorAll("ytd-shopping-overlay-renderer")
+    .forEach((el) => {
+      el.style.display = hidden ? "none" : "";
+    });
+
+  // Sponsored shopping shelf in results
+  document
+    .querySelectorAll("ytd-item-section-renderer:has(ytd-shopping-carousel-renderer)")
+    .forEach((el) => {
+      el.style.display = hidden ? "none" : "";
+    });
+
+  // Merch links in video description
+  document
+    .querySelectorAll("ytd-merchandise-shelf-renderer, ytd-structured-description-content-renderer ytd-merchandise-shelf-renderer")
+    .forEach((el) => {
+      el.style.display = hidden ? "none" : "";
+    });
+}
 
 function hoverGuard(e) {
   if (!state.hoverHidden) return;
@@ -175,6 +236,8 @@ function applyAll() {
   hideRecomendationBar(state.recomendationBarHidden);
   hideGeminiStuff(state.geminiStuffHidden);
   hideProgressbarOnRecomendations(state.progressbarHidden);
+  hideGames(state.gamesHidden);
+  hideMerchStore(state.merchStoreHidden);
 }
 
 let applyScheduled = false;
@@ -189,7 +252,7 @@ function scheduleApply() {
 }
 
 browser.storage.local
-  .get(["blurEnabled", "shortsHidden", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden"])
+  .get(["blurEnabled", "shortsHidden", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden", "gamesHidden", "merchStoreHidden"])
   .then((result) => {
     thumbnailBlur(result.blurEnabled === true);
     hideShorts(result.shortsHidden === true);
@@ -201,6 +264,8 @@ browser.storage.local
     state.geminiStuffHidden = result.geminiStuffHidden === true;
     state.videoInfoMoved = result.videoInfoMoved === true;
     state.progressbarHidden = result.progressbarHidden === true;
+    state.gamesHidden = result.gamesHidden === true;
+    state.merchStoreHidden = result.merchStoreHidden === true;
 
     const startObserver = () => {
       applyAll();
@@ -235,5 +300,4 @@ browser.storage.onChanged.addListener((changes) => {
 // TODO: stuff before shipping
 // 1. polish the whole project; bug fixes
 // 2. add video speed changes
-// block the store, yt games
-// better descirptions
+// better descriptions
