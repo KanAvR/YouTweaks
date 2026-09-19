@@ -2,15 +2,11 @@
   <img src="icons/youtweaks-banner-transparent.png" alt="YouTweaks" width="400" />
 </p>
 
-<p align="center">
-  Simple modifications to improve quality of life on YouTube.
-</p>
-
----
 ## Add extention
 
-[Add to Chrome](placeholderlol)
-[Add to Firefox](placeholderlol)
+[Add to Firefox](https://addons.mozilla.org/en-US/firefox/addon/youtweaks/) 
+
+Extension isnt approved yet so the link wont work.
 
 ## Features
 
@@ -44,6 +40,8 @@
 | Daily Time Limit | Sets a maximum daily YouTube usage |
 | Bedtime Cutoff | Blocks YouTube during configured hours |
 
+#Screenshots
+add
 ## Permissions
 
 - `storage` to save user preferences and watch time data
