@@ -10,6 +10,11 @@
 3. Go to `chrome://extensions` → enable **Developer mode** → click **Load unpacked** → select the unzipped folder.
 
 **Firefox:**
+[Add to Firefox](https://addons.mozilla.org/en-US/firefox/addon/youtweaks/)
+
+Extension isnt approved yet so the link wont work.
+
+To sideload:
 1. Download and unzip the release zip.
 2. Go to `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → select `manifest.json`.
 
