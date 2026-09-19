@@ -78,3 +78,160 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   height: 24px;
   background: var(--yt-spec-outline, rgba(255, 255, 255, 0.2));
 }
+
+.ytp-button.ytweaks-speed-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 100%;
+  padding: 0;
+  vertical-align: top;
+}
+
+.ytp-button.ytweaks-speed-button .ytweaks-speed-icon {
+  display: block;
+  position: static;
+  flex: none;
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  transform: translateY(1.4px);
+}
+
+.ytweaks-speed-panel {
+  position: absolute;
+  right: 12px;
+  bottom: 62px;
+  z-index: 1000;
+  width: min(340px, calc(100% - 24px));
+  max-height: calc(100% - 74px);
+  overflow: auto;
+  box-sizing: border-box;
+  border-radius: 13.6px;
+  background: rgba(28, 28, 28, 0.72);
+  color: #f1f1f1;
+  font: 11.9px/1.4 "YouTube Noto", Roboto, Arial, sans-serif;
+  text-shadow: none;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.ytweaks-speed-panel[hidden] { display: none; }
+.ytweaks-speed-panel button {
+  appearance: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+.ytweaks-speed-header {
+  display: flex;
+  align-items: center;
+  gap: 13.6px;
+  height: 57.8px;
+  padding: 0 17px;
+  border-bottom: 1px solid #ffffff26;
+  font-size: 12.75px;
+  font-weight: 500;
+}
+.ytweaks-speed-panel .ytweaks-speed-back {
+  display: grid;
+  place-items: center;
+  background: transparent;
+  width: 20.4px;
+  height: 30.6px;
+}
+.ytweaks-speed-back svg { width: 20.4px; height: 20.4px; }
+.ytweaks-speed-readout {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin: 22.1px 0 23.8px;
+  font-size: 20.4px;
+  line-height: 25.5px;
+  font-weight: 600;
+}
+.ytweaks-speed-readout input {
+  appearance: textfield;
+  -moz-appearance: textfield;
+  width: 3.6ch;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: right;
+}
+.ytweaks-speed-readout input::-webkit-inner-spin-button,
+.ytweaks-speed-readout input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.ytweaks-speed-adjustment {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 0 17px;
+}
+.ytweaks-speed-adjustment button {
+  flex: 0 0 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffffff1f;
+  font-size: 25.5px;
+  font-weight: 500;
+  line-height: 34px;
+}
+.ytweaks-speed-adjustment input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 1;
+  min-width: 0;
+  height: 3.4px;
+  margin: 0;
+  border: 0;
+  border-radius: 3.4px;
+  background: linear-gradient(to right, #fff var(--speed-fill, 0%), #ffffff40 var(--speed-fill, 0%));
+  cursor: pointer;
+}
+.ytweaks-speed-adjustment input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  background: #fff;
+}
+.ytweaks-speed-adjustment input::-moz-range-thumb {
+  width: 17px;
+  height: 17px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  background: #fff;
+}
+.ytweaks-speed-presets {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8.5px;
+  padding: 23.8px 17px 17px;
+  text-align: center;
+}
+.ytweaks-speed-presets button {
+  width: 100%;
+  height: 34px;
+  border-radius: 20.4px;
+  background: #ffffff1f;
+  font-size: 12.75px;
+  font-weight: 500;
+}
+.ytweaks-speed-presets span {
+  display: block;
+  margin-top: 3.4px;
+  color: #bdbdbd;
+  font-size: 10.2px;
+}
+.ytweaks-speed-panel button:hover { background-color: #ffffff30; }
+.ytweaks-speed-panel button:disabled { opacity: 0.4; cursor: default; }
+.ytweaks-speed-panel :focus-visible,
+.ytweaks-speed-button:focus-visible { outline: 1.7px solid #fff; outline-offset: 2.55px; }

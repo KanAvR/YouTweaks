@@ -297,7 +297,6 @@ browser.storage.onChanged.addListener((changes) => {
   applyAll();
 });
 
-// TODO: stuff before shipping
-// 1. polish the whole project; bug fixes
+
 // 2. add video speed changes
 // better descriptions
