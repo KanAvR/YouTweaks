@@ -41,9 +41,7 @@ To sideload:
 | Feature | Description |
 |---------|-------------|
 | Move Views & Date to Top Row | Shows view count and upload date as badges next to the like button |
-| Custom Playback Speed | Adds a speed button to the video player with a slider and exact entry from 0.25× to 5× (0.01× steps), without requiring Premium. Remembers your choice across videos and tabs. |
-
-Enable **Custom playback speed** in the popup's **Additions** tab. Click the speed button in the player controls or **Settings → Playback speed** to open the custom controls. YouTweaks applies your choice directly to the video and keeps it selected if YouTube resets it. Use the **1.0** preset for normal playback. The panel includes minus/plus buttons, a slider, and an editable speed readout. Turning the toggle off removes the custom controls and restores YouTube's menu. The settings-menu replacement currently recognizes the English “Playback speed” label; the separate button works in every language.
+| Custom Playback Speed | Any speed (0.5-5x) without requiring Premium |
 
 ### Time Tracking
 
