@@ -26,7 +26,21 @@ const HOVER_EVENTS = [
 ];
 
 const KEEP_VIDEO =
-  "ytd-watch-flexy #player, ytd-miniplayer, #shorts-player, ytd-reel-video-renderer";
+  "#movie_player, ytd-watch-flexy #player, ytd-miniplayer, #shorts-player, ytd-reel-video-renderer";
+
+const PREVIEW_HOSTS = [
+  "ytd-video-preview",
+  "#video-preview",
+  "ytd-moving-thumbnail-renderer",
+  "ytd-inline-preview-thumbnail-renderer",
+  "yt-inline-player-view-model",
+].join(", ");
+
+function isPlaybackTarget(element) {
+  const fullscreen = document.fullscreenElement;
+  return element.closest(KEEP_VIDEO) ||
+    (fullscreen && fullscreen.contains(element));
+}
 
 function thumbnailBlur(enabled) {
   document.documentElement.classList.toggle("yt-blur", enabled === true);
@@ -74,11 +88,8 @@ function stopHoverEffects(hidden) {
 
   if (!hidden) return;
   document.querySelectorAll("video").forEach((v) => {
-    if (v.closest(KEEP_VIDEO)) return;
-    if (v.paused && !v.currentSrc && !v.getAttribute("src")) return;
-    v.pause();
-    v.removeAttribute("src");
-    v.load();
+    if (isPlaybackTarget(v) || !v.closest(PREVIEW_HOSTS)) return;
+    if (!v.paused) v.pause();
   });
 }
 function hideProgressbarOnRecomendations(hidden) {
@@ -182,7 +193,7 @@ function hideMerchStore(hidden) {
 function hoverGuard(e) {
   if (!state.hoverHidden) return;
   const t = e.target;
-  if (t instanceof Element && t.closest(THUMB_HOSTS)) {
+  if (t instanceof Element && !isPlaybackTarget(t) && t.closest(THUMB_HOSTS)) {
     e.stopPropagation();
     e.stopImmediatePropagation();
   }
@@ -299,5 +310,4 @@ browser.storage.onChanged.addListener((changes) => {
 
 // TODO: stuff before shipping
 // 1. polish the whole project; bug fixes
-// 2. add video speed changes
 // better descriptions
