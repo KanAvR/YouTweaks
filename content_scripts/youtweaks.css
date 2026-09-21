@@ -6,38 +6,29 @@ html.yt-blur ytd-moving-thumbnail-renderer img {
   filter: blur(var(--ytweaks-blur-amount, 10px)) !important;
 }
 
-/* Sidebar & mini-guide Shorts links */
 html.yt-no-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
 html.yt-no-shorts ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
-
-/* Feed: Shorts shelf / section */
 html.yt-no-shorts ytd-reel-shelf-renderer,
 html.yt-no-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
 html.yt-no-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
-
-/* Feed: individual reel items (Shorts cards in any container) */
 html.yt-no-shorts ytd-reel-item-renderer,
-
-/* Feed: Shorts inside a rich item (inline Shorts while scrolling) */
 html.yt-no-shorts ytd-rich-item-renderer:has(ytd-reel-item-renderer),
 html.yt-no-shorts ytd-rich-item-renderer:has(a[href*="/shorts/"]),
-
-/* Feed: Shorts shelf inside secondary / related results */
 html.yt-no-shorts ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer,
 html.yt-no-shorts ytd-watch-next-secondary-results-renderer ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
-
-/* Chips / tabs: Shorts filter chip */
 html.yt-no-shorts yt-chip-cloud-chip-renderer:has(a[href="/shorts"]),
-
-/* Feed: any rich section that only contains Shorts */
 html.yt-no-shorts ytd-rich-section-renderer:has(a[href*="/shorts/"]),
-html.yt-no-shorts ytd-rich-section-renderer:has(ytd-rich-item-renderer:has(a[href*="/shorts/"])) { display: none !important; }
+html.yt-no-shorts ytd-rich-section-renderer:has(ytd-rich-item-renderer:has(a[href*="/shorts/"])) {
+  display: none !important;
+}
 
 html.yt-noautoplay ytd-video-preview,
 html.yt-noautoplay #video-preview,
 html.yt-noautoplay ytd-moving-thumbnail-renderer,
 html.yt-noautoplay ytd-inline-preview-thumbnail-renderer,
-html.yt-noautoplay yt-inline-player-view-model { display: none !important; }
+html.yt-noautoplay yt-inline-player-view-model {
+  display: none !important;
+}
 
 html.yt-moveinfo ytd-watch-metadata #description #info-container {
   display: none !important;
@@ -116,7 +107,11 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
-.ytweaks-speed-panel[hidden] { display: none; }
+
+.ytweaks-speed-panel[hidden] {
+  display: none;
+}
+
 .ytweaks-speed-panel button {
   appearance: none;
   border: 0;
@@ -125,6 +120,7 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   cursor: pointer;
   padding: 0;
 }
+
 .ytweaks-speed-header {
   display: flex;
   align-items: center;
@@ -135,6 +131,7 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   font-size: 12.75px;
   font-weight: 500;
 }
+
 .ytweaks-speed-panel .ytweaks-speed-back {
   display: grid;
   place-items: center;
@@ -142,7 +139,12 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   width: 20.4px;
   height: 30.6px;
 }
-.ytweaks-speed-back svg { width: 20.4px; height: 20.4px; }
+
+.ytweaks-speed-back svg {
+  width: 20.4px;
+  height: 20.4px;
+}
+
 .ytweaks-speed-readout {
   display: flex;
   align-items: baseline;
@@ -152,6 +154,7 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   line-height: 25.5px;
   font-weight: 600;
 }
+
 .ytweaks-speed-readout input {
   appearance: textfield;
   -moz-appearance: textfield;
@@ -166,14 +169,20 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   font: inherit;
   text-align: right;
 }
+
 .ytweaks-speed-readout input::-webkit-inner-spin-button,
-.ytweaks-speed-readout input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.ytweaks-speed-readout input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .ytweaks-speed-adjustment {
   display: flex;
   align-items: center;
   gap: 17px;
   padding: 0 17px;
 }
+
 .ytweaks-speed-adjustment button {
   flex: 0 0 34px;
   height: 34px;
@@ -183,6 +192,7 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   font-weight: 500;
   line-height: 34px;
 }
+
 .ytweaks-speed-adjustment input {
   appearance: none;
   -webkit-appearance: none;
@@ -195,6 +205,7 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   background: linear-gradient(to right, #fff var(--speed-fill, 0%), #ffffff40 var(--speed-fill, 0%));
   cursor: pointer;
 }
+
 .ytweaks-speed-adjustment input::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 17px;
@@ -203,6 +214,7 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   border-radius: 50%;
   background: #fff;
 }
+
 .ytweaks-speed-adjustment input::-moz-range-thumb {
   width: 17px;
   height: 17px;
@@ -210,6 +222,7 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   border-radius: 50%;
   background: #fff;
 }
+
 .ytweaks-speed-presets {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -217,6 +230,7 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   padding: 23.8px 17px 17px;
   text-align: center;
 }
+
 .ytweaks-speed-presets button {
   width: 100%;
   height: 34px;
@@ -225,13 +239,766 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
   font-size: 12.75px;
   font-weight: 500;
 }
+
 .ytweaks-speed-presets span {
   display: block;
   margin-top: 3.4px;
   color: #bdbdbd;
   font-size: 10.2px;
 }
-.ytweaks-speed-panel button:hover { background-color: #ffffff30; }
-.ytweaks-speed-panel button:disabled { opacity: 0.4; cursor: default; }
+
+.ytweaks-speed-panel button:hover {
+  background-color: #ffffff30;
+}
+
+.ytweaks-speed-panel button:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
 .ytweaks-speed-panel :focus-visible,
-.ytweaks-speed-button:focus-visible { outline: 1.7px solid #fff; outline-offset: 2.55px; }
+.ytweaks-speed-button:focus-visible {
+  outline: 1.7px solid #fff;
+  outline-offset: 2.55px;
+}
+
+html.ytweaks-theme,
+html.ytweaks-theme ytd-app {
+  --yt-spec-base-background: var(--ytweaks-theme-background) !important;
+  --yt-spec-general-background-a: var(--ytweaks-theme-background) !important;
+  --yt-spec-general-background-b: var(--ytweaks-theme-surface) !important;
+  --yt-spec-general-background-c: var(--ytweaks-theme-surface) !important;
+  --yt-spec-raised-background: var(--ytweaks-theme-surface) !important;
+  --yt-spec-menu-background: var(--ytweaks-theme-surface) !important;
+  --yt-spec-brand-background-primary: var(--ytweaks-theme-background) !important;
+  --yt-spec-brand-background-secondary: var(--ytweaks-theme-surface) !important;
+  --yt-spec-badge-chip-background: var(--ytweaks-theme-surface) !important;
+  --yt-spec-text-primary: var(--ytweaks-theme-text) !important;
+  --yt-spec-text-secondary: color-mix(in srgb, var(--ytweaks-theme-text) 70%, var(--ytweaks-theme-background)) !important;
+  --yt-spec-icon-active-other: var(--ytweaks-theme-text) !important;
+  --yt-spec-icon-inactive: var(--yt-spec-text-secondary) !important;
+  --yt-spec-call-to-action: var(--ytweaks-theme-accent) !important;
+  --yt-spec-themed-blue: var(--ytweaks-theme-accent) !important;
+  --yt-spec-static-brand-red: var(--ytweaks-theme-accent) !important;
+  --yt-spec-outline: color-mix(in srgb, var(--ytweaks-theme-text) 20%, var(--ytweaks-theme-background)) !important;
+  --yt-primary-color: var(--ytweaks-theme-text) !important;
+  --yt-secondary-color: var(--yt-spec-text-secondary) !important;
+  --yt-primary-text-color: var(--ytweaks-theme-text) !important;
+  --yt-secondary-text-color: var(--yt-spec-text-secondary) !important;
+  --yt-spec-text-primary-inverse: var(--ytweaks-theme-background) !important;
+  --yt-searchbox-background: var(--ytweaks-theme-background) !important;
+  --yt-searchbox-text-color: var(--ytweaks-theme-text) !important;
+  --yt-searchbox-border-color: var(--yt-spec-outline) !important;
+  --yt-searchbox-legacy-button-color: var(--ytweaks-theme-surface) !important;
+  background-color: var(--ytweaks-theme-background) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(body, ytd-page-manager, ytd-masthead, #background.ytd-masthead, #frosted-glass) {
+  background-color: var(--ytweaks-theme-background) !important;
+}
+html.ytweaks-theme :is(ytd-multi-page-menu-renderer, ytd-engagement-panel-section-list-renderer, tp-yt-paper-dialog) {
+  background-color: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(.ytp-play-progress, .ytp-scrubber-button) {
+  background: var(--ytweaks-theme-accent) !important;
+}
+
+html.ytweaks-theme :is(ytd-searchbox, yt-searchbox) {
+  --yt-searchbox-background: var(--ytweaks-theme-surface) !important;
+  --yt-searchbox-text-color: var(--ytweaks-theme-text) !important;
+  --yt-searchbox-border-color: var(--yt-spec-outline) !important;
+  --yt-searchbox-legacy-border-color: var(--yt-spec-outline) !important;
+  --yt-searchbox-legacy-button-color: var(--ytweaks-theme-surface) !important;
+  --yt-searchbox-legacy-button-hover-color: var(--ytweaks-theme-surface) !important;
+}
+html.ytweaks-theme :is(
+  ytd-searchbox #container,
+  .ytSearchboxComponentInputBox,
+  .ytSearchboxComponentSearchButton,
+  ytd-searchbox #search-icon-legacy
+) {
+  background: var(--ytweaks-theme-surface) !important;
+  border-color: var(--yt-spec-outline) !important;
+  color: var(--ytweaks-theme-text) !important;
+  box-shadow: none !important;
+}
+html.ytweaks-theme :is(ytd-searchbox, yt-searchbox) input {
+  background: transparent !important;
+  color: var(--ytweaks-theme-text) !important;
+  caret-color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(ytd-searchbox, yt-searchbox) input::placeholder {
+  color: var(--yt-spec-text-secondary) !important;
+  opacity: 1;
+}
+html.ytweaks-theme :is(ytd-searchbox #container, .ytSearchboxComponentInputBox):focus-within {
+  border-color: var(--ytweaks-theme-accent) !important;
+}
+
+html.ytweaks-theme :is(
+  ytd-shorts,
+  ytd-shorts #shorts-container,
+  ytd-shorts #shorts-inner-container,
+  ytd-shorts #reel-container,
+  ytd-reel-video-renderer,
+  ytd-reel-video-renderer #container
+) {
+  background-color: var(--ytweaks-theme-background) !important;
+}
+html.ytweaks-theme ytd-shorts :is(
+  #player-container,
+  #player-container-background,
+  #shorts-player,
+  .html5-video-player,
+  .html5-video-container,
+  yt-shorts-video-view-model,
+  .shortsVideoViewModelPlayerContainer
+) {
+  background-color: var(--ytweaks-theme-background) !important;
+}
+html.ytweaks-theme ytd-shorts ytd-engagement-panel-section-list-renderer,
+html.ytweaks-theme ytd-shorts ytd-engagement-panel-section-list-renderer :is(
+  #content,
+  #background,
+  ytd-engagement-panel-title-header-renderer,
+  ytd-comments,
+  ytd-item-section-renderer
+) {
+  background-color: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-shorts #cinematics,
+html.ytweaks-theme ytd-shorts #cinematic-container {
+  display: none !important;
+}
+
+html.ytweaks-theme :is(
+  ytd-guide-renderer,
+  ytd-mini-guide-renderer,
+  #guide-content.ytd-app,
+  #guide-inner-content.ytd-app,
+  ytd-mini-guide-entry-renderer
+) {
+  --yt-spec-base-background: var(--ytweaks-theme-background) !important;
+  background: var(--ytweaks-theme-background) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+
+html.ytweaks-theme :is(
+  ytd-multi-page-menu-renderer,
+  ytd-menu-popup-renderer,
+  ytd-engagement-panel-section-list-renderer,
+  ytd-playlist-panel-renderer,
+  tp-yt-paper-dialog,
+  yt-sheet-view-model
+) {
+  --yt-spec-base-background: var(--ytweaks-theme-surface) !important;
+  --yt-spec-raised-background: var(--ytweaks-theme-surface) !important;
+  --yt-spec-menu-background: var(--ytweaks-theme-surface) !important;
+  --yt-spec-text-secondary: color-mix(in srgb, var(--ytweaks-theme-text) 70%, var(--ytweaks-theme-surface)) !important;
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+
+html.ytweaks-theme :is(
+  ytd-watch-metadata #description,
+  ytd-watch-metadata #description-inner,
+  ytd-engagement-panel-section-list-renderer > #content,
+  ytd-engagement-panel-title-header-renderer,
+  ytd-playlist-panel-renderer #container,
+  ytd-playlist-panel-renderer #header,
+  ytd-playlist-panel-renderer #items,
+  ytd-multi-page-menu-renderer #container,
+  ytd-multi-page-menu-renderer #header,
+  ytd-multi-page-menu-renderer ytd-simple-menu-header-renderer,
+  ytd-multi-page-menu-renderer #sections,
+  ytd-menu-popup-renderer tp-yt-paper-listbox,
+  .ytSheetViewModelContent,
+  .ytp-settings-menu,
+  .ytp-panel-menu
+) {
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+
+html.ytweaks-theme :is(yt-chip-cloud-chip-renderer, .ytChipShapeChip) {
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(
+  yt-chip-cloud-chip-renderer[selected],
+  .ytChipShapeChipSelected,
+  ytd-guide-entry-renderer[active] #endpoint,
+  ytd-guide-entry-renderer #endpoint:hover,
+  ytd-mini-guide-entry-renderer:hover,
+  ytd-menu-service-item-renderer:hover,
+  ytd-menu-navigation-item-renderer:hover,
+  .ytp-menuitem:hover
+) {
+  background: color-mix(in srgb, var(--ytweaks-theme-text) 18%, var(--ytweaks-theme-surface)) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+
+html.ytweaks-theme :is(
+  #video-title,
+  #video-title-link,
+  ytd-watch-metadata h1,
+  .yt-lockup-metadata-view-model__title,
+  .ytLockupMetadataViewModelTitle,
+  .yt-lockup-metadata-view-model__title .yt-core-attributed-string,
+  ytd-guide-entry-renderer .title,
+  ytd-mini-guide-entry-renderer .title,
+  ytd-guide-section-renderer #guide-section-title,
+  ytd-guide-collapsible-section-entry-renderer #title,
+  ytd-channel-name #text,
+  ytd-channel-name #text a,
+  ytd-watch-metadata #description,
+  ytd-watch-metadata #description .yt-core-attributed-string,
+  ytd-comment-renderer #content-text,
+  ytd-comment-view-model #content-text,
+  ytd-comment-view-model #content-text .yt-core-attributed-string,
+  ytd-comments-header-renderer #title,
+  ytd-comment-renderer #author-text,
+  ytd-comment-view-model #author-text,
+  ytd-engagement-panel-title-header-renderer #title,
+  ytd-menu-service-item-renderer yt-formatted-string,
+  ytd-menu-navigation-item-renderer yt-formatted-string,
+  ytd-multi-page-menu-renderer yt-formatted-string,
+  yt-chip-cloud-chip-renderer #text,
+  .ytChipShapeChip .yt-core-attributed-string
+) {
+  color: var(--ytweaks-theme-text) !important;
+}
+
+html.ytweaks-theme :is(
+  #video-title,
+  ytd-watch-metadata h1,
+  .yt-lockup-metadata-view-model__title,
+  .ytLockupMetadataViewModelTitle,
+  ytd-watch-metadata #description,
+  ytd-comment-renderer #content-text,
+  ytd-comment-view-model #content-text,
+  ytd-comments-header-renderer #title,
+  ytd-mini-guide-entry-renderer .title,
+  ytd-guide-entry-renderer .title
+) span {
+  color: inherit !important;
+}
+
+html.ytweaks-theme :is(
+  #metadata-line,
+  .yt-content-metadata-view-model__metadata-text,
+  .ytContentMetadataViewModelMetadataText,
+  .ytContentMetadataViewModelDelimiter,
+  .yt-content-metadata-view-model__metadata-text .yt-core-attributed-string,
+  ytd-video-meta-block #metadata,
+  ytd-comment-renderer #published-time-text,
+  ytd-comment-view-model #published-time-text
+) {
+  color: var(--yt-spec-text-secondary) !important;
+}
+html.ytweaks-theme :is(
+  #metadata-line,
+  .yt-content-metadata-view-model__metadata-text,
+  .ytContentMetadataViewModelMetadataText,
+  .ytContentMetadataViewModelDelimiter,
+  ytd-video-meta-block #metadata,
+  ytd-comment-renderer #published-time-text,
+  ytd-comment-view-model #published-time-text
+) :is(span, a) {
+  color: inherit !important;
+}
+html.ytweaks-theme :is(
+  ytd-watch-metadata #description,
+  ytd-comment-renderer #content-text,
+  ytd-comment-view-model #content-text
+) a {
+  color: var(--ytweaks-theme-accent) !important;
+}
+
+html.ytweaks-theme ytd-popup-container yt-contextual-sheet-layout,
+html.ytweaks-theme ytd-popup-container yt-contextual-sheet-layout :is(
+  .ytContextualSheetLayoutHeaderContainer,
+  .ytContextualSheetLayoutContentContainer,
+  .ytContextualSheetLayoutFooterContainer,
+  yt-panel-header-view-model,
+  [role="menu"]
+) {
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-popup-container yt-contextual-sheet-layout :is(
+  h2, [role="menuitem"], .yt-core-attributed-string
+) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-popup-container yt-contextual-sheet-layout :is(
+  h2, [role="menuitem"], .yt-core-attributed-string
+) span {
+  color: inherit !important;
+}
+html.ytweaks-theme ytd-popup-container yt-contextual-sheet-layout [role="menuitem"]:is(:hover, :focus-visible) {
+  background: color-mix(in srgb, var(--ytweaks-theme-text) 18%, var(--ytweaks-theme-surface)) !important;
+}
+
+html.ytweaks-theme ytd-shorts .reel-video-in-sequence-thumbnail {
+  background-color: var(--ytweaks-theme-background) !important;
+}
+html.ytweaks-theme ytd-shorts #anchored-panel {
+  background-color: var(--ytweaks-theme-surface) !important;
+}
+html.ytweaks-theme ytd-shorts #anchored-panel-scrim {
+  background-color: transparent !important;
+}
+html.ytweaks-theme ytd-watch-metadata ytd-video-owner-renderer #upload-info,
+html.ytweaks-theme ytd-watch-metadata ytd-video-owner-renderer #upload-info :is(a, span, yt-attributed-string, yt-formatted-string) {
+  color: var(--ytweaks-theme-text) !important;
+}
+
+html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextTonal {
+  background: var(--ytweaks-theme-surface) !important;
+}
+html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled {
+  background: var(--ytweaks-theme-text) !important;
+  color: var(--ytweaks-theme-background) !important;
+}
+html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost :is(
+  .ytSpecButtonShapeNextButtonTextContent,
+  .ytAttributedStringHost,
+  .ytIconWrapperHost,
+  yt-icon,
+  span
+) {
+  color: inherit !important;
+}
+html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextTonal:hover {
+  background: color-mix(in srgb, var(--ytweaks-theme-text) 18%, var(--ytweaks-theme-surface)) !important;
+}
+html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost[aria-pressed="true"] {
+  color: var(--ytweaks-theme-accent) !important;
+}
+
+html.ytweaks-theme :is(
+  ytd-masthead,
+  ytd-guide-renderer,
+  ytd-mini-guide-renderer,
+  ytd-popup-container,
+  ytd-playlist-panel-renderer,
+  ytd-miniplayer-info-bar,
+  ytd-rich-grid-renderer,
+  ytd-browse,
+  ytd-search,
+  ytd-watch-metadata,
+  ytd-watch-next-secondary-results-renderer,
+  ytd-engagement-panel-section-list-renderer,
+  ytd-comments
+) :is(yt-icon, .ytIconWrapperHost, .ytSpecIconShapeHost):not(
+  ytd-thumbnail *, yt-thumbnail-view-model *, .html5-video-player *,
+  ytd-topbar-logo-renderer *
+) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled :is(
+  yt-icon, .ytIconWrapperHost, .ytSpecIconShapeHost
+) {
+  color: var(--ytweaks-theme-background) !important;
+}
+html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost[aria-pressed="true"] :is(
+  yt-icon, .ytIconWrapperHost, .ytSpecIconShapeHost
+) {
+  color: var(--ytweaks-theme-accent) !important;
+}
+
+html.ytweaks-theme ytd-tabbed-page-header :is(
+  #page-header-container, #page-header, #tabs-container, #tabs-inner-container
+),
+html.ytweaks-theme :is(ytd-c4-tabbed-header-renderer, ytd-browse #show-more-container) {
+  background: var(--ytweaks-theme-background) !important;
+}
+html.ytweaks-theme ytd-browse :is(
+  .dynamicTextViewModelH1,
+  .ytTabShapeTab,
+  ytd-shelf-renderer h2,
+  ytd-rich-shelf-renderer h2,
+  .shortsLockupViewModelHostOutsideMetadataTitle,
+  .shortsLockupViewModelHostOutsideMetadataEndpoint,
+  yt-description-preview-view-model,
+  ytd-post-renderer #content-text,
+  ytd-post-renderer #author-text
+),
+html.ytweaks-theme ytd-browse :is(
+  .dynamicTextViewModelH1,
+  ytd-shelf-renderer h2,
+  ytd-rich-shelf-renderer h2,
+  .shortsLockupViewModelHostOutsideMetadataTitle,
+  yt-description-preview-view-model,
+  ytd-post-renderer #content-text,
+  ytd-post-renderer #author-text
+) :is(span, yt-formatted-string) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-browse .ytTabShapeTabBarSelected {
+  background-color: var(--ytweaks-theme-accent) !important;
+}
+html.ytweaks-theme ytd-browse :is(
+  .shortsLockupViewModelHostOutsideMetadataSubhead,
+  ytd-post-renderer #published-time-text
+),
+html.ytweaks-theme ytd-browse :is(
+  .shortsLockupViewModelHostOutsideMetadataSubhead,
+  ytd-post-renderer #published-time-text
+) :is(span, a) {
+  color: var(--yt-spec-text-secondary) !important;
+}
+html.ytweaks-theme ytd-post-renderer {
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+  border-color: var(--yt-spec-outline) !important;
+}
+html.ytweaks-theme ytd-browse :is(
+  ytd-post-renderer,
+  ytd-backstage-post-thread-renderer,
+  ytd-backstage-post-renderer,
+  yt-post-view-model
+) :is(#post, #main, #content, #post-container, .post-layout) {
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-browse :is(
+  ytd-post-renderer,
+  ytd-backstage-post-thread-renderer,
+  ytd-backstage-post-renderer,
+  yt-post-view-model
+) :is(#author-text, #content-text, #content-text *, .yt-core-attributed-string) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-browse :is(
+  ytd-post-renderer,
+  ytd-backstage-post-thread-renderer,
+  ytd-backstage-post-renderer,
+  yt-post-view-model
+) :is(#published-time-text, #published-time-text *, #vote-count, #vote-count *) {
+  color: var(--yt-spec-text-secondary) !important;
+}
+html.ytweaks-theme ytd-browse :is(
+  ytd-channel-featured-content-renderer,
+  ytd-channel-featured-content-renderer #content,
+  yt-horizontal-list-renderer
+) {
+  background: var(--ytweaks-theme-background) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-browse :is(
+  ytd-channel-featured-content-renderer,
+  yt-horizontal-list-renderer
+) :is(h2, h3, a, span, yt-formatted-string, yt-attributed-string) {
+  color: inherit !important;
+}
+html.ytweaks-theme :is(ytd-rich-shelf-renderer, ytd-shelf-renderer, ytd-rich-section-renderer) :is(
+  #show-more-button, #show-more-button-container, .button-container
+),
+html.ytweaks-theme ytd-watch-next-secondary-results-renderer #show-more-container {
+  background-color: var(--ytweaks-theme-background) !important;
+}
+html.ytweaks-theme :is(ytd-browse, ytd-watch-next-secondary-results-renderer) .ytSpecButtonShapeNextOutline {
+  background: var(--ytweaks-theme-background) !important;
+  color: var(--ytweaks-theme-text) !important;
+  border-color: var(--yt-spec-outline) !important;
+}
+
+html.ytweaks-theme :is(
+  ytd-playlist-panel-renderer .header,
+  ytd-miniplayer .ytdMiniplayerComponentContent,
+  ytd-miniplayer-info-bar
+) {
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(
+  ytd-playlist-panel-renderer .header,
+  ytd-miniplayer-info-bar .ytdMiniplayerInfoBarTitle,
+  ytd-playlist-panel-video-renderer #index-container,
+  ytd-playlist-panel-video-renderer #meta
+) :is(h1, h3, span, yt-formatted-string, yt-attributed-string),
+html.ytweaks-theme ytd-miniplayer-info-bar .ytdMiniplayerInfoBarTitle {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(
+  ytd-playlist-panel-renderer .header .byline-title,
+  ytd-playlist-panel-renderer .header .index-message,
+  ytd-playlist-panel-video-renderer #meta #byline,
+  ytd-playlist-panel-video-renderer #meta #video-info,
+  ytd-miniplayer-info-bar .ytdMiniplayerInfoBarSubtitle,
+  ytd-miniplayer-info-bar .ytdMiniplayerInfoBarSubtitle span
+) {
+  color: color-mix(in srgb, var(--ytweaks-theme-text) 70%, var(--ytweaks-theme-surface)) !important;
+}
+html.ytweaks-theme ytd-playlist-panel-renderer ytd-playlist-panel-video-renderer,
+html.ytweaks-theme ytd-playlist-panel-renderer ytd-playlist-panel-video-renderer #container {
+  background: var(--ytweaks-theme-surface) !important;
+}
+html.ytweaks-theme ytd-playlist-panel-renderer ytd-playlist-panel-video-renderer:is([selected], :hover),
+html.ytweaks-theme ytd-playlist-panel-renderer ytd-playlist-panel-video-renderer:is([selected], :hover) #container {
+  background: color-mix(in srgb, var(--ytweaks-theme-text) 10%, var(--ytweaks-theme-surface)) !important;
+}
+
+html.ytweaks-theme :is(
+  yt-lockup-view-model, .ytLockupViewModelHost,
+  ytd-rich-grid-media, ytd-video-renderer, ytd-compact-video-renderer,
+  ytd-grid-video-renderer
+) {
+  --yt-spec-touch-response: var(--ytweaks-theme-accent) !important;
+  --yt-spec-touch-response-inverse: var(--ytweaks-theme-accent) !important;
+}
+html.ytweaks-theme :is(yt-lockup-view-model, .ytLockupViewModelHost):hover::before {
+  background: color-mix(in srgb, var(--ytweaks-theme-accent) 12%, var(--ytweaks-theme-background)) !important;
+}
+
+html.ytweaks-theme ytd-comments-header-renderer,
+html.ytweaks-theme ytd-comment-simplebox-renderer,
+html.ytweaks-theme ytd-comment-simplebox-renderer :is(#main, #input-container, #contenteditable-root) {
+  background: transparent !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-comments-header-renderer :is(#count, #count *, #sort-menu, #sort-menu yt-formatted-string),
+html.ytweaks-theme ytd-comment-simplebox-renderer #contenteditable-root {
+  color: var(--ytweaks-theme-text) !important;
+  caret-color: var(--ytweaks-theme-accent);
+}
+html.ytweaks-theme ytd-comment-simplebox-renderer #placeholder-area {
+  color: var(--yt-spec-text-secondary) !important;
+}
+html.ytweaks-theme ytd-comment-simplebox-renderer #simplebox-placeholder,
+html.ytweaks-theme ytd-comment-simplebox-renderer #input-container {
+  border-color: var(--yt-spec-outline) !important;
+}
+html.ytweaks-theme ytd-comment-simplebox-renderer #input-container:focus-within {
+  border-color: var(--ytweaks-theme-accent) !important;
+}
+
+html.ytweaks-theme ytd-comments .ytSpecButtonShapeNextHost {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-comments .ytSpecButtonShapeNextHost :is(
+  .ytSpecButtonShapeNextButtonTextContent,
+  .ytAttributedStringHost,
+  .ytIconWrapperHost,
+  .ytSpecIconShapeHost,
+  yt-icon,
+  span
+) {
+  color: inherit !important;
+}
+html.ytweaks-theme ytd-comments .ytSpecButtonShapeNextHost:hover {
+  background-color: color-mix(in srgb, var(--ytweaks-theme-text) 12%, var(--ytweaks-theme-background)) !important;
+}
+
+html.ytweaks-theme ytd-watch-metadata :is(
+  #description,
+  #description-inner,
+  yt-description-preview-view-model,
+  ytd-text-inline-expander,
+  yt-attributed-string
+) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  #description,
+  #description-inner,
+  yt-description-preview-view-model,
+  ytd-text-inline-expander,
+  yt-attributed-string
+) :is(span, yt-formatted-string, .yt-core-attributed-string) {
+  color: inherit !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  #description,
+  #description-inner,
+  yt-description-preview-view-model,
+  ytd-text-inline-expander
+) a {
+  color: var(--ytweaks-theme-accent) !important;
+}
+
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-macro-markers-list-renderer,
+  ytd-macro-markers-list-item-renderer,
+  ytd-macro-markers-list-item-renderer #details,
+  ytd-macro-markers-list-item-renderer #content
+) {
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-macro-markers-list-renderer,
+  ytd-macro-markers-list-item-renderer
+) :is(#title, #title *, #time, #time *, h2, h3, span, yt-formatted-string, yt-attributed-string) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-watch-metadata ytd-macro-markers-list-renderer .ytSpecButtonShapeNextHost {
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+  border-color: var(--yt-spec-outline) !important;
+}
+
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-structured-description-content-renderer,
+  ytd-video-description-transcript-section-renderer,
+  ytd-video-description-infocards-section-renderer,
+  ytd-video-description-header-renderer,
+  ytd-video-description-channel-renderer,
+  ytd-expandable-video-description-body-renderer
+) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-structured-description-content-renderer,
+  ytd-video-description-transcript-section-renderer,
+  ytd-video-description-infocards-section-renderer,
+  ytd-video-description-header-renderer,
+  ytd-video-description-channel-renderer,
+  ytd-expandable-video-description-body-renderer
+) :is(#header, #title, #subtitle, #description, #text, #channel-name, h2, h3, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-video-description-transcript-section-renderer,
+  ytd-video-description-infocards-section-renderer,
+  ytd-video-description-channel-renderer
+) :is(#description, #text, #subtitle, #subscriber-count, #metadata) :is(span, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string) {
+  color: var(--yt-spec-text-secondary) !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-text-inline-expander #more,
+  ytd-text-inline-expander #less,
+  ytd-expandable-video-description-body-renderer #more,
+  ytd-expandable-video-description-body-renderer #less
+) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  #more, #less, #expand, #collapse, #expand-button, #collapse-button,
+  .ytDescriptionPreviewViewModelMoreText,
+  yt-description-preview-view-model [role="button"]
+),
+html.ytweaks-theme ytd-watch-metadata :is(
+  #more, #less, #expand, #collapse, #expand-button, #collapse-button,
+  .ytDescriptionPreviewViewModelMoreText,
+  yt-description-preview-view-model [role="button"]
+) :is(span, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string) {
+  color: var(--ytweaks-theme-text) !important;
+}
+
+html.ytweaks-theme ytd-watch-metadata ytd-macro-markers-list-renderer :is(
+  #time, #time-container, .time, .timestamp, .timestamp-container
+) {
+  background-color: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-watch-metadata ytd-macro-markers-list-renderer :is(
+  #time, #time-container, .time, .timestamp, .timestamp-container
+) :is(span, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string) {
+  color: inherit !important;
+}
+
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-watch-info-text,
+  yt-content-metadata-view-model,
+  .ytContentMetadataViewModelMetadataText,
+  .ytContentMetadataViewModelDelimiter,
+  #metadata-line
+) :is(span, a, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string) {
+  color: var(--yt-spec-text-secondary) !important;
+}
+
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-video-owner-renderer,
+  ytd-subscribe-button-renderer,
+  ytd-segmented-like-dislike-button-renderer,
+  like-button-view-model,
+  dislike-button-view-model,
+  segmented-like-dislike-button-view-model
+) :is(yt-icon, .ytIconWrapperHost, .ytSpecIconShapeHost, .ytSpecButtonShapeNextButtonTextContent) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-video-owner-renderer,
+  ytd-subscribe-button-renderer,
+  ytd-segmented-like-dislike-button-renderer,
+  like-button-view-model,
+  dislike-button-view-model,
+  segmented-like-dislike-button-view-model
+) [aria-pressed="true"] :is(yt-icon, .ytIconWrapperHost, .ytSpecIconShapeHost, .ytSpecButtonShapeNextButtonTextContent) {
+  color: var(--ytweaks-theme-accent) !important;
+}
+
+html.ytweaks-theme :is(
+  ytd-reel-shelf-renderer,
+  ytd-rich-section-renderer ytd-reel-item-renderer,
+  yt-shorts-lockup-view-model
+) :is(
+  #video-title, #video-title-link,
+  .shortsLockupViewModelHostOutsideMetadataTitle,
+  .shortsLockupViewModelHostOutsideMetadataEndpoint
+),
+html.ytweaks-theme :is(
+  ytd-reel-shelf-renderer,
+  ytd-rich-section-renderer ytd-reel-item-renderer,
+  yt-shorts-lockup-view-model
+) :is(
+  #video-title, #video-title-link,
+  .shortsLockupViewModelHostOutsideMetadataTitle,
+  .shortsLockupViewModelHostOutsideMetadataEndpoint
+) :is(span, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(
+  ytd-reel-shelf-renderer,
+  ytd-rich-section-renderer ytd-reel-item-renderer,
+  yt-shorts-lockup-view-model
+) :is(
+  #metadata-line,
+  .shortsLockupViewModelHostOutsideMetadataSubhead,
+  .ytContentMetadataViewModelMetadataText
+),
+html.ytweaks-theme :is(
+  ytd-reel-shelf-renderer,
+  ytd-rich-section-renderer ytd-reel-item-renderer,
+  yt-shorts-lockup-view-model
+) :is(
+  #metadata-line,
+  .shortsLockupViewModelHostOutsideMetadataSubhead,
+  .ytContentMetadataViewModelMetadataText
+) :is(span, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string) {
+  color: var(--yt-spec-text-secondary) !important;
+}
+
+html.ytweaks-theme :is(
+  ytd-unified-share-panel-renderer,
+  ytd-share-panel-renderer,
+  ytd-share-target-renderer,
+  ytd-copy-link-renderer
+) :is(#container, #header, #content, #share-url, #url, input) {
+  background-color: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+  border-color: var(--yt-spec-outline) !important;
+}
+html.ytweaks-theme :is(
+  ytd-unified-share-panel-renderer,
+  ytd-share-panel-renderer,
+  ytd-share-target-renderer,
+  ytd-copy-link-renderer
+) :is(h1, h2, h3, #title, #label, #text, span, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(
+  ytd-unified-share-panel-renderer,
+  ytd-share-panel-renderer,
+  ytd-copy-link-renderer
+) input::selection {
+  background: color-mix(in srgb, var(--ytweaks-theme-accent) 35%, var(--ytweaks-theme-surface)) !important;
+}

@@ -41,7 +41,10 @@ To sideload:
 | Feature | Description |
 |---------|-------------|
 | Move Views & Date to Top Row | Shows view count and upload date as badges next to the like button |
-| Custom Playback Speed | Any speed (0.5-5x) without requiring Premium |
+| Custom Color Theme | Change YouTube colors |
+| Custom Playback Speed | Adds a speed button allowing speeds from 0.25x to 5x without requiring Premium |
+
+Enable **Custom playback speed** in the popup's **Additions** tab. Click the speed button in the player controls or **Settings → Playback speed** to open the custom controls. YouTweaks applies your choice directly to the video and keeps it selected if YouTube resets it. Use the **1.0** preset for normal playback. The panel includes minus/plus buttons, a slider, and an editable speed readout. Turning the toggle off removes the custom controls and restores YouTube's menu. The settings-menu replacement currently recognizes the English “Playback speed” label; the separate button works in every language.
 
 ### Time Tracking
 
@@ -55,3 +58,7 @@ To sideload:
 
 - `storage` to save user preferences and watch time data
 - `scripting` to inject content scripts on YouTube pages
+
+## Acknowledgements
+- [Rosé Pine](https://rosepinetheme.com/palette/)
+- [Catppuccin](https://catppuccin.com/palette/)

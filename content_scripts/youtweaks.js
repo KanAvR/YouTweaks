@@ -2,29 +2,6 @@ const EYE_SVG = `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentCo
 
 const CAL_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17 3V1h-2v2H9V1H7v2H4a1 1 0 0 0-1 1v17a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-3zM5 8h14v12H5V8z"/></svg>`;
 
-const THUMB_HOSTS = [
-  "ytd-thumbnail",
-  "ytd-rich-item-renderer",
-  "ytd-video-renderer",
-  "ytd-compact-video-renderer",
-  "ytd-grid-video-renderer",
-  "ytd-playlist-video-renderer",
-  "ytd-reel-item-renderer",
-  "yt-lockup-view-model",
-  "yt-thumbnail-view-model",
-  "yt-collection-thumbnail-view-model",
-  "a#thumbnail",
-].join(", ");
-
-const HOVER_EVENTS = [
-  "pointerover",
-  "pointerenter",
-  "pointermove",
-  "mouseover",
-  "mouseenter",
-  "mousemove",
-];
-
 const KEEP_VIDEO =
   "ytd-watch-flexy #player, ytd-miniplayer, #shorts-player, ytd-reel-video-renderer";
 
@@ -66,12 +43,6 @@ function hideNotificationPanel(hidden) {
 }
 
 function stopHoverEffects(hidden) {
-  document
-    .querySelectorAll(".ytSpecTouchFeedbackShapeHoverEffect")
-    .forEach((el) => {
-    el.style.display = hidden ? "none" : "";
-  });
-
   if (!hidden) return;
   document.querySelectorAll("video").forEach((v) => {
     if (v.closest(KEEP_VIDEO)) return;
@@ -179,18 +150,15 @@ function hideMerchStore(hidden) {
     });
 }
 
-function hoverGuard(e) {
-  if (!state.hoverHidden) return;
-  const t = e.target;
-  if (t instanceof Element && t.closest(THUMB_HOSTS)) {
-    e.stopPropagation();
-    e.stopImmediatePropagation();
+// Let YouTube receive pointer events for card menus and touch feedback.
+// CSS hides preview surfaces; catch playback as well as DOM insertion so previews
+// cannot restart when YouTube reuses an existing video element.
+document.addEventListener("play", (event) => {
+  if (state.hoverHidden && event.target instanceof HTMLVideoElement &&
+      !event.target.closest(KEEP_VIDEO)) {
+    stopHoverEffects(true);
   }
-}
-
-for (const type of HOVER_EVENTS) {
-  document.addEventListener(type, hoverGuard, { capture: true });
-}
+}, { capture: true });
 
 function hideRecomendationBar(hidden) {
   const bars = document.querySelectorAll("ytd-feed-filter-chip-bar-renderer");

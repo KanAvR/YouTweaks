@@ -102,6 +102,41 @@
         <div class="tab-panel" id="tab-additions">
             <div class="settings">
                 <div class="row">
+                    <label class="label" for="customThemeToggle">Custom color theme</label>
+                    <label class="switch">
+                        <input type="checkbox" id="customThemeToggle" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <div id="themeEditor" hidden>
+                    <label class="theme-preset-label" for="themePreset">Color scheme</label>
+                    <select id="themePreset">
+                        <option value="custom">Custom</option>
+                        <option value="default">YouTweaks default</option>
+                        <optgroup label="Rosé Pine">
+                            <option value="rose-pine">Rosé Pine</option>
+                            <option value="rose-pine-moon">Rosé Pine Moon</option>
+                            <option value="rose-pine-dawn">Rosé Pine Dawn (light)</option>
+                        </optgroup>
+                        <optgroup label="Catppuccin">
+                            <option value="catppuccin-mocha">Catppuccin Mocha</option>
+                            <option value="catppuccin-macchiato">Catppuccin Macchiato</option>
+                            <option value="catppuccin-frappe">Catppuccin Frappé</option>
+                            <option value="catppuccin-latte">Catppuccin Latte (light)</option>
+                        </optgroup>
+                    </select>
+                    <div class="theme-color-row"><label for="themeBackground">Background</label><span class="theme-swatch" data-swatch="background" aria-hidden="true"></span><input id="themeBackground" type="text" spellcheck="false" maxlength="7" pattern="#[0-9a-fA-F]{6}" required data-theme-color="background" value="#0f0f0f" aria-label="Background hex color" /></div><details class="theme-rgb"><summary>Adjust background</summary><label class="theme-rgb-row">Red<input type="range" min="0" max="255" step="1" value="15" data-color-key="background" data-channel="0" aria-label="Background red" /><output data-channel-output="background-0">15</output></label><label class="theme-rgb-row">Green<input type="range" min="0" max="255" step="1" value="15" data-color-key="background" data-channel="1" aria-label="Background green" /><output data-channel-output="background-1">15</output></label><label class="theme-rgb-row">Blue<input type="range" min="0" max="255" step="1" value="15" data-color-key="background" data-channel="2" aria-label="Background blue" /><output data-channel-output="background-2">15</output></label></details>
+                    <div class="theme-color-row"><label for="themeSurface">Panels</label><span class="theme-swatch" data-swatch="surface" aria-hidden="true"></span><input id="themeSurface" type="text" spellcheck="false" maxlength="7" pattern="#[0-9a-fA-F]{6}" required data-theme-color="surface" value="#212121" aria-label="Panels hex color" /></div><details class="theme-rgb"><summary>Adjust panels</summary><label class="theme-rgb-row">Red<input type="range" min="0" max="255" step="1" value="33" data-color-key="surface" data-channel="0" aria-label="Panels red" /><output data-channel-output="surface-0">33</output></label><label class="theme-rgb-row">Green<input type="range" min="0" max="255" step="1" value="33" data-color-key="surface" data-channel="1" aria-label="Panels green" /><output data-channel-output="surface-1">33</output></label><label class="theme-rgb-row">Blue<input type="range" min="0" max="255" step="1" value="33" data-color-key="surface" data-channel="2" aria-label="Panels blue" /><output data-channel-output="surface-2">33</output></label></details>
+                    <div class="theme-color-row"><label for="themeText">Text</label><span class="theme-swatch" data-swatch="text" aria-hidden="true"></span><input id="themeText" type="text" spellcheck="false" maxlength="7" pattern="#[0-9a-fA-F]{6}" required data-theme-color="text" value="#f1f1f1" aria-label="Text hex color" /></div><details class="theme-rgb"><summary>Adjust text</summary><label class="theme-rgb-row">Red<input type="range" min="0" max="255" step="1" value="241" data-color-key="text" data-channel="0" aria-label="Text red" /><output data-channel-output="text-0">241</output></label><label class="theme-rgb-row">Green<input type="range" min="0" max="255" step="1" value="241" data-color-key="text" data-channel="1" aria-label="Text green" /><output data-channel-output="text-1">241</output></label><label class="theme-rgb-row">Blue<input type="range" min="0" max="255" step="1" value="241" data-color-key="text" data-channel="2" aria-label="Text blue" /><output data-channel-output="text-2">241</output></label></details>
+                    <div class="theme-color-row"><label for="themeAccent">Accent</label><span class="theme-swatch" data-swatch="accent" aria-hidden="true"></span><input id="themeAccent" type="text" spellcheck="false" maxlength="7" pattern="#[0-9a-fA-F]{6}" required data-theme-color="accent" value="#ff4444" aria-label="Accent hex color" /></div><details class="theme-rgb"><summary>Adjust accent</summary><label class="theme-rgb-row">Red<input type="range" min="0" max="255" step="1" value="255" data-color-key="accent" data-channel="0" aria-label="Accent red" /><output data-channel-output="accent-0">255</output></label><label class="theme-rgb-row">Green<input type="range" min="0" max="255" step="1" value="68" data-color-key="accent" data-channel="1" aria-label="Accent green" /><output data-channel-output="accent-1">68</output></label><label class="theme-rgb-row">Blue<input type="range" min="0" max="255" step="1" value="68" data-color-key="accent" data-channel="2" aria-label="Accent blue" /><output data-channel-output="accent-2">68</output></label></details>
+                    <div id="themePreview" aria-label="Theme preview"><span>YouTube preview</span><div>Video title <span class="theme-preview-accent">●</span></div></div>
+                    <div class="theme-actions">
+                        <button id="applyTheme" type="button" class="snooze-action-btn">Apply colors</button>
+                        <button id="resetTheme" type="button" class="snooze-action-btn">Reset colors</button>
+                    </div>
+                </div>
+                <div id="themeStatus" role="status" aria-live="polite"></div>
+                <div class="row">
                     <label class="label" for="customPlaybackSpeedToggle">Custom playback speed</label>
                     <label class="switch">
                         <input type="checkbox" id="customPlaybackSpeedToggle" />
@@ -207,6 +242,8 @@
                 </div>
             </div>
         </div>
+        <script src="../content_scripts/theme_presets.js"></script>
+        <script src="theme.js"></script>
         <script src="popup.js"></script>
     </body>
 </html>
