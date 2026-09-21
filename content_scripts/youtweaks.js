@@ -230,11 +230,7 @@ function hoverGuard(e) {
     e.stopPropagation();
     e.stopImmediatePropagation();
   }
-}
-
-for (const type of HOVER_EVENTS) {
-  document.addEventListener(type, hoverGuard, { capture: true });
-}
+}, { capture: true });
 
 function hideRecomendationBar(hidden) {
   const bars = document.querySelectorAll("ytd-feed-filter-chip-bar-renderer");

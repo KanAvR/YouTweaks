@@ -7,6 +7,7 @@ const toggles = [
   { id: "hideRecomendationBar",            key: "recomendationBarHidden" },
   { id: "hideGeminiStuff",                 key: "geminiStuffHidden" },
   { id: "moveVideoInfo",                   key: "videoInfoMoved" },
+  { id: "customPlaybackSpeedToggle",       key: "customPlaybackSpeedEnabled" },
   { id: "hideProgressbarOnRecomendations", key: "progressbarHidden" },
   { id: "hideShorts",                      key: "shortsHidden" },
   { id: "hideGames",                       key: "gamesHidden" },

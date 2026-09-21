@@ -16,7 +16,7 @@ Extension isnt approved yet so the link wont work.
 
 To sideload:
 1. Download and unzip the release zip.
-2. Go to `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → select `manifest.json`.
+2. Go to `about:debugging` → **Load Temporary Add-on…** → select `manifest.json`. The extension will stay active until you quit firefox 
 
 ## Features
 
@@ -33,14 +33,16 @@ To sideload:
 | Hide Gemini/AI Features | Removes AI-generated summaries and "Ask" buttons |
 | Hide Progress Bars | Removes watched progress indicators on thumbnails |
 | Hide Shorts | Removes all Shorts content from feeds and sidebar |
-| Hide YouTube Games & Playables | Removes games and Playables from the sidebar and homepage |
-| Hide Merch Store | Removes merch and shopping shelves |
+| Hide YouTube Playables | Removes the Playables section |
+| Hide Merch Store | Removes shopping shelves below videos |
 
 ### Additions
 
 | Feature | Description |
 |---------|-------------|
 | Move Views & Date to Top Row | Shows view count and upload date as badges next to the like button |
+| Custom Color Theme | Change YouTube colors |
+| Custom Playback Speed | Adds a speed button allowing speeds from 0.25x to 5x without requiring Premium |
 
 ### Time Tracking
 
@@ -54,3 +56,8 @@ To sideload:
 
 - `storage` to save user preferences and watch time data
 - `scripting` to inject content scripts on YouTube pages
+
+## Acknowledgements
+
+- <img src="https://raw.githubusercontent.com/rose-pine/rose-pine-theme/main/assets/icon.png" width="16" height="16" align="absmiddle"> <a href="https://rosepinetheme.com/palette/">Rosé Pine</a>
+- <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="16" height="16" align="absmiddle"> <a href="https://catppuccin.com/palette/">Catppuccin</a>

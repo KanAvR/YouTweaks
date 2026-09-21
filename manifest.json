@@ -8,7 +8,7 @@
     "32": "icons/icon32.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  }, 
+  },
   "permissions": [
     "storage",
     "scripting"
@@ -36,10 +36,13 @@
 "content_scripts": [
   {
     "matches": ["https://www.youtube.com/*"],
-    "js": ["content_scripts/timetracker.js",
+    "js": ["content_scripts/theme_presets.js",
+           "content_scripts/theme.js",
+           "content_scripts/timetracker.js",
            "content_scripts/youtweaks.js",
-           "content_scripts/videometa.js"],
-    "css": ["content_scripts/youtweaks.css"], 
+           "content_scripts/videometa.js",
+           "content_scripts/playbackspeed.js"],
+    "css": ["content_scripts/youtweaks.css"],
     "run_at": "document_start"
   }
 ]
