@@ -16,7 +16,7 @@ Extension isnt approved yet so the link wont work.
 
 To sideload:
 1. Download and unzip the release zip.
-2. Go to `about:debugging#/runtime/this-firefox` → **Load Temporary Add-on…** → select `manifest.json`.
+2. Go to `about:debugging` → **Load Temporary Add-on…** → select `manifest.json`. The extension will stay active until you quit firefox 
 
 ## Features
 
@@ -33,7 +33,7 @@ To sideload:
 | Hide Gemini/AI Features | Removes AI-generated summaries and "Ask" buttons |
 | Hide Progress Bars | Removes watched progress indicators on thumbnails |
 | Hide Shorts | Removes all Shorts content from feeds and sidebar |
-| Hide YouTube Games | Removes the Games section from sidebar and homepage |
+| Hide YouTube Playables | Removes the Playables section from sidebar and homepage |
 | Hide Merch Store | Removes merch and shopping shelves |
 
 ### Additions
@@ -43,8 +43,6 @@ To sideload:
 | Move Views & Date to Top Row | Shows view count and upload date as badges next to the like button |
 | Custom Color Theme | Change YouTube colors |
 | Custom Playback Speed | Adds a speed button allowing speeds from 0.25x to 5x without requiring Premium |
-
-Enable **Custom playback speed** in the popup's **Additions** tab. Click the speed button in the player controls or **Settings → Playback speed** to open the custom controls. YouTweaks applies your choice directly to the video and keeps it selected if YouTube resets it. Use the **1.0** preset for normal playback. The panel includes minus/plus buttons, a slider, and an editable speed readout. Turning the toggle off removes the custom controls and restores YouTube's menu. The settings-menu replacement currently recognizes the English “Playback speed” label; the separate button works in every language.
 
 ### Time Tracking
 
@@ -60,5 +58,6 @@ Enable **Custom playback speed** in the popup's **Additions** tab. Click the spe
 - `scripting` to inject content scripts on YouTube pages
 
 ## Acknowledgements
-- [Rosé Pine](https://rosepinetheme.com/palette/)
-- [Catppuccin](https://catppuccin.com/palette/)
+
+- <img src="https://raw.githubusercontent.com/rose-pine/rose-pine-theme/main/assets/icon.png" width="16" height="16" align="absmiddle"> <a href="https://rosepinetheme.com/palette/">Rosé Pine</a>
+- <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="16" height="16" align="absmiddle"> <a href="https://catppuccin.com/palette/">Catppuccin</a>
