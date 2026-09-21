@@ -6,27 +6,56 @@ html.yt-blur ytd-moving-thumbnail-renderer img {
   filter: blur(var(--ytweaks-blur-amount, 10px)) !important;
 }
 
-html.yt-no-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
-html.yt-no-shorts ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+html.yt-no-shorts [data-ytweaks-short],
+html.yt-no-shorts ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+html.yt-no-shorts yt-guide-entry-renderer:has(a[href^="/shorts"]),
+html.yt-no-shorts ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]),
+html.yt-no-shorts #guide [title="Shorts"],
 html.yt-no-shorts ytd-reel-shelf-renderer,
-html.yt-no-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
-html.yt-no-shorts ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
+html.yt-no-shorts ytd-rich-shelf-renderer[is-shorts],
+html.yt-no-shorts ytd-rich-grid-slim-media[is-short],
 html.yt-no-shorts ytd-reel-item-renderer,
+html.yt-no-shorts ytm-shorts-lockup-view-model,
+html.yt-no-shorts ytm-shorts-lockup-view-model-v2,
+html.yt-no-shorts grid-shelf-view-model:has(a[href^="/shorts"]),
 html.yt-no-shorts ytd-rich-item-renderer:has(ytd-reel-item-renderer),
-html.yt-no-shorts ytd-rich-item-renderer:has(a[href*="/shorts/"]),
-html.yt-no-shorts ytd-watch-next-secondary-results-renderer ytd-reel-shelf-renderer,
-html.yt-no-shorts ytd-watch-next-secondary-results-renderer ytd-item-section-renderer:has(ytd-reel-shelf-renderer),
-html.yt-no-shorts yt-chip-cloud-chip-renderer:has(a[href="/shorts"]),
-html.yt-no-shorts ytd-rich-section-renderer:has(a[href*="/shorts/"]),
-html.yt-no-shorts ytd-rich-section-renderer:has(ytd-rich-item-renderer:has(a[href*="/shorts/"])) {
+html.yt-no-shorts ytd-rich-item-renderer:has(ytd-rich-grid-slim-media[is-short]),
+html.yt-no-shorts ytd-rich-item-renderer:has(ytm-shorts-lockup-view-model),
+html.yt-no-shorts ytd-rich-item-renderer:has(a[href^="/shorts"]),
+html.yt-no-shorts ytd-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]),
+html.yt-no-shorts ytd-grid-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]),
+html.yt-no-shorts ytd-rich-item-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]),
+html.yt-no-shorts ytd-compact-video-renderer:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]),
+html.yt-no-shorts yt-lockup-view-model:has(ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"]),
+html.yt-no-shorts yt-lockup-view-model:has(a[href^="/shorts"]),
+html.yt-no-shorts yt-chip-cloud-chip-renderer:has(a[href^="/shorts"]),
+html.yt-no-shorts yt-tab-shape[tab-title="Shorts"] {
   display: none !important;
 }
 
 html.yt-noautoplay ytd-video-preview,
 html.yt-noautoplay #video-preview,
+html.yt-noautoplay #mouseover-overlay,
+html.yt-noautoplay #mouseover-overlay-renderer,
 html.yt-noautoplay ytd-moving-thumbnail-renderer,
 html.yt-noautoplay ytd-inline-preview-thumbnail-renderer,
-html.yt-noautoplay yt-inline-player-view-model {
+html.yt-noautoplay yt-inline-player-view-model,
+html.yt-noautoplay ytd-thumbnail video,
+html.yt-noautoplay yt-thumbnail-view-model video {
+  display: none !important;
+}
+
+html.yt-no-games [data-ytweaks-game],
+html.yt-no-games ytd-gaming-section-renderer,
+html.yt-no-games ytd-rich-shelf-renderer:has(a[href^="/playables"]),
+html.yt-no-games ytd-shelf-renderer:has(a[href^="/playables"]),
+html.yt-no-games grid-shelf-view-model:has(a[href^="/playables"]),
+html.yt-no-games ytd-guide-entry-renderer:has(a[href^="/playables"]),
+html.yt-no-games ytd-guide-entry-renderer:has(a[href^="/gaming"]),
+html.yt-no-games ytd-mini-guide-entry-renderer:has(a[href^="/playables"]),
+html.yt-no-games ytd-mini-guide-entry-renderer:has(a[href^="/gaming"]),
+html.yt-no-games yt-chip-cloud-chip-renderer:has(a[href^="/playables"]),
+html.yt-no-games yt-chip-cloud-chip-renderer:has(a[href^="/gaming"]) {
   display: none !important;
 }
 
