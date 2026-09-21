@@ -33,7 +33,7 @@ To sideload:
 | Hide Gemini/AI Features | Removes AI-generated summaries and "Ask" buttons |
 | Hide Progress Bars | Removes watched progress indicators on thumbnails |
 | Hide Shorts | Removes all Shorts content from feeds and sidebar |
-| Hide YouTube Games | Removes the Games section from sidebar and homepage |
+| Hide YouTube Games & Playables | Removes games and Playables from the sidebar and homepage |
 | Hide Merch Store | Removes merch and shopping shelves |
 
 ### Additions
