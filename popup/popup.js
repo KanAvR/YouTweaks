@@ -11,7 +11,6 @@ const toggles = [
   { id: "hideProgressbarOnRecomendations", key: "progressbarHidden" },
   { id: "hideShorts",                      key: "shortsHidden" },
   { id: "hideGames",                       key: "gamesHidden" },
-  { id: "hideMerchStore",                  key: "merchStoreHidden" },
 ];
 
 for (const { id, key } of toggles) {

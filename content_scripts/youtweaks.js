@@ -104,7 +104,6 @@ const state = {
   videoInfoMoved: false,
   hideProgressbarOnRecomendations: false,
   gamesHidden: false,
-  merchStoreHidden: false,
 };
 
 function setButtonHidden(ariaLabel, hidden) {
@@ -195,32 +194,6 @@ function hideGames(hidden) {
     });
 }
 
-function hideMerchStore(hidden) {
-  document
-    .querySelectorAll("ytd-merchandise-shelf-renderer")
-    .forEach((el) => {
-      el.style.display = hidden ? "none" : "";
-    });
-
-  document
-    .querySelectorAll("ytd-shopping-overlay-renderer")
-    .forEach((el) => {
-      el.style.display = hidden ? "none" : "";
-    });
-
-  document
-    .querySelectorAll("ytd-item-section-renderer:has(ytd-shopping-carousel-renderer)")
-    .forEach((el) => {
-      el.style.display = hidden ? "none" : "";
-    });
-
-  document
-    .querySelectorAll("ytd-merchandise-shelf-renderer, ytd-structured-description-content-renderer ytd-merchandise-shelf-renderer")
-    .forEach((el) => {
-      el.style.display = hidden ? "none" : "";
-    });
-}
-
 function hoverGuard(e) {
   if (!state.hoverHidden) return;
 
@@ -290,7 +263,6 @@ function applyAll() {
   hideGeminiStuff(state.geminiStuffHidden);
   hideProgressbarOnRecomendations(state.progressbarHidden);
   hideGames(state.gamesHidden);
-  hideMerchStore(state.merchStoreHidden);
 }
 
 let applyScheduled = false;
@@ -305,7 +277,7 @@ function scheduleApply() {
 }
 
 browser.storage.local
-  .get(["blurEnabled", "shortsHidden", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden", "gamesHidden", "merchStoreHidden"])
+  .get(["blurEnabled", "shortsHidden", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden", "gamesHidden"])
   .then((result) => {
     thumbnailBlur(result.blurEnabled === true);
     state.createHidden = result.createHidden === true;
@@ -318,7 +290,6 @@ browser.storage.local
     state.videoInfoMoved = result.videoInfoMoved === true;
     state.progressbarHidden = result.progressbarHidden === true;
     state.gamesHidden = result.gamesHidden === true;
-    state.merchStoreHidden = result.merchStoreHidden === true;
 
     const startObserver = () => {
       applyAll();

@@ -34,7 +34,7 @@ To sideload:
 | Hide Progress Bars | Removes watched progress indicators on thumbnails |
 | Hide Shorts | Removes all Shorts content from feeds and sidebar |
 | Hide YouTube Playables | Removes the Playables section |
-| Hide Merch Store | Removes shopping shelves below videos |
+| Hide Merch Store | Removes shopping shelves, channel store links, and Store tabs |
 
 ### Additions
 
