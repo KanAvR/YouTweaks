@@ -89,6 +89,7 @@
       });
       return step;
     };
+
     const decrease = makeStep("−", -0.05, "Decrease playback speed");
     const increase = makeStep("+", 0.05, "Increase playback speed");
     adjustment.append(decrease, slider, increase);
@@ -125,6 +126,7 @@
       if (settings?.getAttribute("aria-expanded") !== "true") settings?.click();
       settings?.focus();
     });
+
     const open = () => {
       // Close YouTube's settings so the replacement is the only menu shown.
       const settings = player.querySelector('.ytp-settings-button[aria-expanded="true"]');
@@ -133,20 +135,24 @@
       button.setAttribute("aria-expanded", "true");
       slider.focus();
     };
+
     button.addEventListener("click", (event) => {
       event.stopPropagation();
       if (panel.hidden) open();
       else close();
     });
+
     slider.addEventListener("input", () => choose(slider.valueAsNumber));
     number.addEventListener("input", () => {
       number.setCustomValidity(valid(number.valueAsNumber) ? "" : "Enter a speed from 0.25 to 5.");
       if (number.validity.valid) choose(number.valueAsNumber);
     });
+
     number.addEventListener("change", () => {
       if (!number.reportValidity()) return;
       choose(number.valueAsNumber);
     });
+
     // Keep typing and slider keys from triggering the player's shortcuts.
     for (const type of ["keydown", "keyup", "keypress", "click", "pointerdown"]) {
       panel.addEventListener(type, (event) => {
@@ -157,10 +163,13 @@
         }
       });
     }
+
     const outside = (event) => {
       if (!panel.contains(event.target) && !button.contains(event.target)) close();
     };
+
     document.addEventListener("pointerdown", outside);
+
     // Capture activation before YouTube opens its restricted speed submenu.
     const nativeSpeedMenu = (event) => {
       const row = event.target.closest?.('.ytp-menuitem');
@@ -171,12 +180,14 @@
       event.stopImmediatePropagation();
       open();
     };
+
     player.addEventListener("click", nativeSpeedMenu, true);
     player.addEventListener("keydown", nativeSpeedMenu, true);
     const rateChanged = () => {
       enforce(video);
       refresh();
     };
+
     for (const type of ["ratechange", "loadedmetadata", "play"]) video.addEventListener(type, rateChanged);
     controls.prepend(button);
     player.append(panel);
@@ -221,6 +232,7 @@
     refresh();
   });
   let scheduled = false;
+
   function scheduleScan() {
     if (scheduled) return;
     scheduled = true;
@@ -229,6 +241,7 @@
       scan();
     });
   }
+
   const start = () => {
     scan();
     new MutationObserver(scheduleScan).observe(document.body, { childList: true, subtree: true });

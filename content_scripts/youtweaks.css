@@ -293,6 +293,12 @@ html.yt-moveinfo ytd-watch-metadata #description #info-container {
 
 html.ytweaks-theme,
 html.ytweaks-theme ytd-app {
+  --ytweaks-theme-muted: color-mix(in srgb, var(--ytweaks-theme-text) 70%, var(--ytweaks-theme-background));
+  --ytweaks-theme-muted-surface: color-mix(in srgb, var(--ytweaks-theme-text) 70%, var(--ytweaks-theme-surface));
+  --ytweaks-theme-outline: color-mix(in srgb, var(--ytweaks-theme-text) 28%, var(--ytweaks-theme-background));
+  --ytweaks-theme-hover: color-mix(in srgb, var(--ytweaks-theme-text) 12%, var(--ytweaks-theme-surface));
+  --ytweaks-theme-selected: color-mix(in srgb, var(--ytweaks-theme-accent) 22%, var(--ytweaks-theme-surface));
+  --ytweaks-theme-on-accent: var(--ytweaks-theme-background);
   --yt-spec-base-background: var(--ytweaks-theme-background) !important;
   --yt-spec-general-background-a: var(--ytweaks-theme-background) !important;
   --yt-spec-general-background-b: var(--ytweaks-theme-surface) !important;
@@ -303,13 +309,13 @@ html.ytweaks-theme ytd-app {
   --yt-spec-brand-background-secondary: var(--ytweaks-theme-surface) !important;
   --yt-spec-badge-chip-background: var(--ytweaks-theme-surface) !important;
   --yt-spec-text-primary: var(--ytweaks-theme-text) !important;
-  --yt-spec-text-secondary: color-mix(in srgb, var(--ytweaks-theme-text) 70%, var(--ytweaks-theme-background)) !important;
+  --yt-spec-text-secondary: var(--ytweaks-theme-muted) !important;
   --yt-spec-icon-active-other: var(--ytweaks-theme-text) !important;
   --yt-spec-icon-inactive: var(--yt-spec-text-secondary) !important;
   --yt-spec-call-to-action: var(--ytweaks-theme-accent) !important;
   --yt-spec-themed-blue: var(--ytweaks-theme-accent) !important;
   --yt-spec-static-brand-red: var(--ytweaks-theme-accent) !important;
-  --yt-spec-outline: color-mix(in srgb, var(--ytweaks-theme-text) 20%, var(--ytweaks-theme-background)) !important;
+  --yt-spec-outline: var(--ytweaks-theme-outline) !important;
   --yt-primary-color: var(--ytweaks-theme-text) !important;
   --yt-secondary-color: var(--yt-spec-text-secondary) !important;
   --yt-primary-text-color: var(--ytweaks-theme-text) !important;
@@ -425,7 +431,7 @@ html.ytweaks-theme :is(
   --yt-spec-base-background: var(--ytweaks-theme-surface) !important;
   --yt-spec-raised-background: var(--ytweaks-theme-surface) !important;
   --yt-spec-menu-background: var(--ytweaks-theme-surface) !important;
-  --yt-spec-text-secondary: color-mix(in srgb, var(--ytweaks-theme-text) 70%, var(--ytweaks-theme-surface)) !important;
+  --yt-spec-text-secondary: var(--ytweaks-theme-muted-surface) !important;
   background: var(--ytweaks-theme-surface) !important;
   color: var(--ytweaks-theme-text) !important;
 }
@@ -451,12 +457,19 @@ html.ytweaks-theme :is(
   color: var(--ytweaks-theme-text) !important;
 }
 
-html.ytweaks-theme :is(yt-chip-cloud-chip-renderer, .ytChipShapeChip) {
+html.ytweaks-theme yt-chip-cloud-chip-renderer {
+  background: transparent !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(
+  yt-chip-cloud-chip-renderer .ytChipShapeChip,
+  .ytChipShapeChip
+) {
   background: var(--ytweaks-theme-surface) !important;
   color: var(--ytweaks-theme-text) !important;
 }
 html.ytweaks-theme :is(
-  yt-chip-cloud-chip-renderer[selected],
+  yt-chip-cloud-chip-renderer[selected] .ytChipShapeChip,
   .ytChipShapeChipSelected,
   ytd-guide-entry-renderer[active] #endpoint,
   ytd-guide-entry-renderer #endpoint:hover,
@@ -465,7 +478,7 @@ html.ytweaks-theme :is(
   ytd-menu-navigation-item-renderer:hover,
   .ytp-menuitem:hover
 ) {
-  background: color-mix(in srgb, var(--ytweaks-theme-text) 18%, var(--ytweaks-theme-surface)) !important;
+  background: var(--ytweaks-theme-selected) !important;
   color: var(--ytweaks-theme-text) !important;
 }
 
@@ -568,7 +581,7 @@ html.ytweaks-theme ytd-popup-container yt-contextual-sheet-layout :is(
   color: inherit !important;
 }
 html.ytweaks-theme ytd-popup-container yt-contextual-sheet-layout [role="menuitem"]:is(:hover, :focus-visible) {
-  background: color-mix(in srgb, var(--ytweaks-theme-text) 18%, var(--ytweaks-theme-surface)) !important;
+  background: var(--ytweaks-theme-selected) !important;
 }
 
 html.ytweaks-theme ytd-shorts .reel-video-in-sequence-thumbnail {
@@ -605,7 +618,7 @@ html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-
   color: inherit !important;
 }
 html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextTonal:hover {
-  background: color-mix(in srgb, var(--ytweaks-theme-text) 18%, var(--ytweaks-theme-surface)) !important;
+  background: var(--ytweaks-theme-hover) !important;
 }
 html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost[aria-pressed="true"] {
   color: var(--ytweaks-theme-accent) !important;
@@ -630,6 +643,9 @@ html.ytweaks-theme :is(
   ytd-topbar-logo-renderer *
 ) {
   color: var(--ytweaks-theme-text) !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
 }
 html.ytweaks-theme :is(ytd-watch-metadata, ytd-browse, ytd-watch-next-secondary-results-renderer, ytd-playlist-panel-renderer, ytd-miniplayer-info-bar) .ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled :is(
   yt-icon, .ytIconWrapperHost, .ytSpecIconShapeHost
@@ -764,7 +780,7 @@ html.ytweaks-theme :is(
   ytd-miniplayer-info-bar .ytdMiniplayerInfoBarSubtitle,
   ytd-miniplayer-info-bar .ytdMiniplayerInfoBarSubtitle span
 ) {
-  color: color-mix(in srgb, var(--ytweaks-theme-text) 70%, var(--ytweaks-theme-surface)) !important;
+  color: var(--ytweaks-theme-muted-surface) !important;
 }
 html.ytweaks-theme ytd-playlist-panel-renderer ytd-playlist-panel-video-renderer,
 html.ytweaks-theme ytd-playlist-panel-renderer ytd-playlist-panel-video-renderer #container {
@@ -772,7 +788,7 @@ html.ytweaks-theme ytd-playlist-panel-renderer ytd-playlist-panel-video-renderer
 }
 html.ytweaks-theme ytd-playlist-panel-renderer ytd-playlist-panel-video-renderer:is([selected], :hover),
 html.ytweaks-theme ytd-playlist-panel-renderer ytd-playlist-panel-video-renderer:is([selected], :hover) #container {
-  background: color-mix(in srgb, var(--ytweaks-theme-text) 10%, var(--ytweaks-theme-surface)) !important;
+  background: var(--ytweaks-theme-hover) !important;
 }
 
 html.ytweaks-theme :is(
@@ -793,10 +809,49 @@ html.ytweaks-theme ytd-comment-simplebox-renderer :is(#main, #input-container, #
   background: transparent !important;
   color: var(--ytweaks-theme-text) !important;
 }
-html.ytweaks-theme ytd-comments-header-renderer :is(#count, #count *, #sort-menu, #sort-menu yt-formatted-string),
+html.ytweaks-theme ytd-comments-header-renderer :is(
+  #count,
+  #count *,
+  #sort-menu,
+  #sort-menu yt-dropdown-menu,
+  #sort-menu #label,
+  #sort-menu #icon-label,
+  #sort-menu #icon-label *,
+  #sort-menu yt-formatted-string,
+  #sort-menu .yt-core-attributed-string,
+  #sort-menu yt-icon,
+  #sort-menu .ytIconWrapperHost,
+  #sort-menu .ytSpecIconShapeHost
+),
 html.ytweaks-theme ytd-comment-simplebox-renderer #contenteditable-root {
   color: var(--ytweaks-theme-text) !important;
   caret-color: var(--ytweaks-theme-accent);
+}
+html.ytweaks-theme ytd-comments-header-renderer #sort-menu :is(
+  yt-dropdown-menu,
+  tp-yt-paper-button,
+  #label,
+  #trigger
+) {
+  background: transparent !important;
+  color: var(--ytweaks-theme-text) !important;
+  box-shadow: none !important;
+}
+html.ytweaks-theme ytd-popup-container :is(
+  tp-yt-paper-listbox,
+  yt-list-view-model,
+  [role="menu"]
+) {
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-popup-container :is(
+  tp-yt-paper-item,
+  ytd-menu-service-item-renderer,
+  ytd-menu-navigation-item-renderer,
+  [role="menuitem"]
+) :is(yt-formatted-string, yt-attributed-string, .yt-core-attributed-string, span) {
+  color: var(--ytweaks-theme-text) !important;
 }
 html.ytweaks-theme ytd-comment-simplebox-renderer #placeholder-area {
   color: var(--yt-spec-text-secondary) !important;
@@ -823,7 +878,57 @@ html.ytweaks-theme ytd-comments .ytSpecButtonShapeNextHost :is(
   color: inherit !important;
 }
 html.ytweaks-theme ytd-comments .ytSpecButtonShapeNextHost:hover {
-  background-color: color-mix(in srgb, var(--ytweaks-theme-text) 12%, var(--ytweaks-theme-background)) !important;
+  background-color: var(--ytweaks-theme-hover) !important;
+}
+html.ytweaks-theme ytd-comments :is(
+  #vote-count-middle,
+  .ytCommentViewModelVoteCount,
+  [class*="VoteCount"]
+) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-comments :is(
+  #author-text,
+  #author-text *,
+  .ytCommentViewModelAuthor,
+  .ytCommentViewModelAuthor *
+) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme ytd-comments #author-text {
+  background: transparent !important;
+}
+html.ytweaks-theme ytd-comments :is(
+  ytd-comment-renderer[is-channel-owner] #author-text,
+  ytd-comment-renderer[is-channel-owner] #author-text *,
+  ytd-comment-view-model[is-channel-owner] #author-text,
+  ytd-comment-view-model[is-channel-owner] #author-text *,
+  .ytCommentViewModelAuthorIsChannelOwner,
+  .ytCommentViewModelAuthorIsChannelOwner *,
+  .ytCommentViewModelHostIsChannelOwner #author-text *,
+  .ytCommentViewModelHostIsChannelOwner #author-text
+) {
+  background: var(--ytweaks-theme-accent) !important;
+  color: var(--ytweaks-theme-on-accent) !important;
+}
+html.ytweaks-theme ytd-comments :is(
+  ytd-author-comment-badge-renderer[creator],
+  ytd-author-comment-badge-renderer[creator] #name,
+  ytd-author-comment-badge-renderer[creator] #name *,
+  ytd-author-comment-badge-renderer[creator] #icon,
+  .channel-owner
+) {
+  --ytd-author-comment-badge-background-color: var(--ytweaks-theme-accent) !important;
+  --ytd-author-comment-badge-name-color: var(--ytweaks-theme-on-accent) !important;
+  background-color: var(--ytweaks-theme-accent) !important;
+  color: var(--ytweaks-theme-on-accent) !important;
+}
+html.ytweaks-theme ytd-comments :is(
+  #pinned-comment-badge,
+  [class*="PinnedCommentBadge"],
+  [class*="pinned-comment-badge"]
+) {
+  color: var(--ytweaks-theme-muted) !important;
 }
 
 html.ytweaks-theme ytd-watch-metadata :is(
@@ -940,8 +1045,16 @@ html.ytweaks-theme ytd-watch-metadata :is(
   .ytContentMetadataViewModelMetadataText,
   .ytContentMetadataViewModelDelimiter,
   #metadata-line
-) :is(span, a, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string) {
+) :is(span, a, div, yt-formatted-string, yt-attributed-string, .yt-core-attributed-string, yt-animated-rolling-number, animated-rolling-character) {
   color: var(--yt-spec-text-secondary) !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  view-count-factoid-renderer,
+  view-count-factoid-renderer *,
+  ytd-watch-info-text #view-count,
+  ytd-watch-info-text #view-count *
+) {
+  color: var(--ytweaks-theme-text) !important;
 }
 
 html.ytweaks-theme ytd-watch-metadata :is(
@@ -963,6 +1076,17 @@ html.ytweaks-theme ytd-watch-metadata :is(
   segmented-like-dislike-button-view-model
 ) [aria-pressed="true"] :is(yt-icon, .ytIconWrapperHost, .ytSpecIconShapeHost, .ytSpecButtonShapeNextButtonTextContent) {
   color: var(--ytweaks-theme-accent) !important;
+}
+html.ytweaks-theme ytd-watch-metadata :is(
+  like-button-view-model,
+  segmented-like-dislike-button-view-model,
+  ytd-segmented-like-dislike-button-renderer
+) :is(
+  button[aria-label^="like this video" i],
+  .ytSpecButtonShapeNextButtonTextContent,
+  .ytSpecButtonShapeNextButtonTextContent *
+) {
+  color: var(--ytweaks-theme-text) !important;
 }
 
 html.ytweaks-theme :is(
@@ -1030,4 +1154,86 @@ html.ytweaks-theme :is(
   ytd-copy-link-renderer
 ) input::selection {
   background: color-mix(in srgb, var(--ytweaks-theme-accent) 35%, var(--ytweaks-theme-surface)) !important;
+}
+
+html.ytweaks-theme :is(
+  yt-video-description-youchat-section-view-model,
+  video-summary-content-view-model,
+  .videoSummaryContentViewModelHost
+) {
+  --yt-spec-text-primary: var(--ytweaks-theme-text) !important;
+  --yt-spec-text-secondary: var(--ytweaks-theme-muted-surface) !important;
+  --yt-spec-call-to-action: var(--ytweaks-theme-accent) !important;
+  --yt-spec-outline: var(--ytweaks-theme-outline) !important;
+  background: var(--ytweaks-theme-surface) !important;
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(
+  yt-video-description-youchat-section-view-model,
+  video-summary-content-view-model,
+  .videoSummaryContentViewModelHost
+) :is(
+  yt-formatted-string,
+  yt-attributed-string,
+  .yt-core-attributed-string,
+  .ytAttributedStringHost,
+  .videoSummaryContentViewModelParagraph,
+  .videoSummaryContentViewModelParagraphContainer,
+  .videoSummaryContentViewModelList,
+  .videoSummaryContentViewModelListItem,
+  p,
+  li,
+  span
+) {
+  color: var(--ytweaks-theme-text) !important;
+}
+html.ytweaks-theme :is(
+  yt-video-description-youchat-section-view-model,
+  video-summary-content-view-model,
+  .videoSummaryContentViewModelHost
+) a {
+  color: var(--ytweaks-theme-accent) !important;
+}
+html.ytweaks-theme :is(
+  yt-video-description-youchat-section-view-model,
+  video-summary-content-view-model,
+  .videoSummaryContentViewModelHost
+) .ytSpecButtonShapeNextOutline,
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-structured-description-content-renderer,
+  ytd-video-description-header-renderer,
+  ytd-video-description-infocards-section-renderer,
+  ytd-video-description-channel-renderer,
+  ytd-expandable-video-description-body-renderer
+) .ytSpecButtonShapeNextOutline {
+  background: transparent !important;
+  border-color: var(--ytweaks-theme-accent) !important;
+  color: var(--ytweaks-theme-accent) !important;
+  box-shadow: none !important;
+}
+html.ytweaks-theme :is(
+  yt-video-description-youchat-section-view-model,
+  video-summary-content-view-model,
+  .videoSummaryContentViewModelHost
+) .ytSpecButtonShapeNextOutline :is(
+  yt-icon,
+  .ytIconWrapperHost,
+  .ytSpecIconShapeHost,
+  .ytSpecButtonShapeNextButtonTextContent,
+  .yt-core-attributed-string
+),
+html.ytweaks-theme ytd-watch-metadata :is(
+  ytd-structured-description-content-renderer,
+  ytd-video-description-header-renderer,
+  ytd-video-description-infocards-section-renderer,
+  ytd-video-description-channel-renderer,
+  ytd-expandable-video-description-body-renderer
+) .ytSpecButtonShapeNextOutline :is(
+  yt-icon,
+  .ytIconWrapperHost,
+  .ytSpecIconShapeHost,
+  .ytSpecButtonShapeNextButtonTextContent,
+  .yt-core-attributed-string
+) {
+  color: inherit !important;
 }
