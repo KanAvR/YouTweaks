@@ -223,14 +223,26 @@ function hideMerchStore(hidden) {
 
 function hoverGuard(e) {
   if (!state.hoverHidden) return;
-  const path = typeof e.composedPath === "function" ? e.composedPath() : [e.target];
+
+  const path =
+    typeof e.composedPath === "function" ? e.composedPath() : [e.target];
   const elements = path.filter((item) => item instanceof Element);
+
   if (elements.some(isPlaybackTarget)) return;
-  if (elements.some((item) => item.matches(THUMB_HOSTS) || item.closest(THUMB_HOSTS))) {
+
+  if (
+    elements.some(
+      (item) => item.matches(THUMB_HOSTS) || item.closest(THUMB_HOSTS)
+    )
+  ) {
     e.stopPropagation();
     e.stopImmediatePropagation();
   }
-}, { capture: true });
+}
+
+for (const type of HOVER_EVENTS) {
+  document.addEventListener(type, hoverGuard, { capture: true });
+}
 
 function hideRecomendationBar(hidden) {
   const bars = document.querySelectorAll("ytd-feed-filter-chip-bar-renderer");
