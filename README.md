@@ -59,6 +59,6 @@ To sideload:
 
 ## Acknowledgements
 
-- [Music from Apple (2019)](https://www.youtube.com/watch?v=3dyK9mjf_4g)
+- [Music from Apple 2019 event ](https://www.youtube.com/watch?v=3dyK9mjf_4g)
 - <img src="https://raw.githubusercontent.com/rose-pine/rose-pine-theme/main/assets/icon.png" width="16" height="16" align="absmiddle"> <a href="https://rosepinetheme.com/palette/">Rosé Pine</a>
 - <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="16" height="16" align="absmiddle"> <a href="https://catppuccin.com/palette/">Catppuccin</a>
