@@ -1,18 +1,13 @@
 <p align="center">
-  <img src="icons/youtweaks-banner-transparent.png" alt="YouTweaks" width="400" />
+  <img src="icons/youtweaks-banner-transparent.png" alt="YouTweaks" width="800" />
 </p>
 
 ## [Watch the v1.1 trailer](https://drive.google.com/file/d/1ig3-sloF9YI1WYN1jmgtXuIsBnVWo7h0/view?usp=sharing)
 
-# Install
+# Install 
 
-**Firefox:**
-[Add to Firefox](https://addons.mozilla.org/en-US/firefox/addon/youtweaks/)
+## **Firefox:** [Add to Firefox](https://addons.mozilla.org/en-US/firefox/addon/youtweaks/)
 
-To sideload:
-1. Download and unzip the release zip.
-2. Go to `about:debugging` → **Load Temporary Add-on…** → select `manifest.json`. The extension will stay active until you quit firefox
-   
 **Chrome / Edge / Brave:**
 1. Download [`youtweaks-v1.1.zip`](https://github.com/KanAvR/YouTweaks/releases/download/v1.1/youtweaks-v1.1.zip) from the latest release.
 2. Unzip the file.
