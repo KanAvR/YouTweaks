@@ -14,8 +14,6 @@
 **Firefox:**
 [Add to Firefox](https://addons.mozilla.org/en-US/firefox/addon/youtweaks/)
 
-Extension isnt approved yet so the link wont work.
-
 To sideload:
 1. Download and unzip the release zip.
 2. Go to `about:debugging` → **Load Temporary Add-on…** → select `manifest.json`. The extension will stay active until you quit firefox 
