@@ -2,6 +2,8 @@
   <img src="icons/youtweaks-banner-transparent.png" alt="YouTweaks" width="400" />
 </p>
 
+## [Watch the v1.1 trailer](https://drive.google.com/file/d/1ig3-sloF9YI1WYN1jmgtXuIsBnVWo7h0/view?usp=sharing)
+
 ## Install
 
 **Chrome / Edge / Brave:**
