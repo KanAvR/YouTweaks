@@ -5,7 +5,7 @@
 ## Install
 
 **Chrome / Edge / Brave:**
-1. Download [`youtweaks-v1.0.zip`](https://github.com/KanAvR/YouTweaks/releases/download/v1.0/youtweaks-v1.0.zip) from the latest release.
+1. Download [`youtweaks-v1.1.zip`](https://github.com/KanAvR/YouTweaks/releases/download/v1.1/youtweaks-v1.1.zip) from the latest release.
 2. Unzip the file.
 3. Go to `chrome://extensions` → enable **Developer mode** → click **Load unpacked** → select the unzipped folder.
 
@@ -59,5 +59,6 @@ To sideload:
 
 ## Acknowledgements
 
+- [Music from Apple (2019)](https://www.youtube.com/watch?v=3dyK9mjf_4g)
 - <img src="https://raw.githubusercontent.com/rose-pine/rose-pine-theme/main/assets/icon.png" width="16" height="16" align="absmiddle"> <a href="https://rosepinetheme.com/palette/">Rosé Pine</a>
 - <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="16" height="16" align="absmiddle"> <a href="https://catppuccin.com/palette/">Catppuccin</a>
