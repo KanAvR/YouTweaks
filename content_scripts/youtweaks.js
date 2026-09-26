@@ -10,6 +10,17 @@ const THUMB_HOSTS = [
   "a#thumbnail",
 ].join(", ");
 
+const HOVER_HOSTS = [
+  THUMB_HOSTS,
+  "ytd-rich-item-renderer",
+  "ytd-rich-grid-media",
+  "ytd-video-renderer",
+  "ytd-grid-video-renderer",
+  "ytd-compact-video-renderer",
+  "yt-lockup-view-model",
+  ".ytLockupViewModelHost",
+].join(", ");
+
 const HOVER_EVENTS = [
   "pointerover",
   "pointerenter",
@@ -76,6 +87,12 @@ function isPlaybackTarget(element) {
 
 function thumbnailBlur(enabled) {
   document.documentElement.classList.toggle("yt-blur", enabled === true);
+}
+
+function setThumbnailBlurAmount(value) {
+  const amount = Number.isFinite(value)
+    ? Math.min(30, Math.max(1, Math.round(value))) : 10;
+  document.documentElement.style.setProperty("--ytweaks-blur-amount", `${amount}px`);
 }
 
 function hideShorts(enabled) {
@@ -205,7 +222,7 @@ function hoverGuard(e) {
 
   if (
     elements.some(
-      (item) => item.matches(THUMB_HOSTS) || item.closest(THUMB_HOSTS)
+      (item) => item.closest(HOVER_HOSTS)
     )
   ) {
     e.stopPropagation();
@@ -277,8 +294,9 @@ function scheduleApply() {
 }
 
 browser.storage.local
-  .get(["blurEnabled", "shortsHidden", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden", "gamesHidden"])
+  .get(["blurEnabled", "blurAmount", "shortsHidden", "createHidden", "notificationHidden", "micHidden", "hoverHidden", "recomendationBarHidden", "geminiStuffHidden", "videoInfoMoved", "progressbarHidden", "gamesHidden"])
   .then((result) => {
+    setThumbnailBlurAmount(result.blurAmount);
     thumbnailBlur(result.blurEnabled === true);
     state.createHidden = result.createHidden === true;
     state.notificationHidden = result.notificationHidden === true;
@@ -307,6 +325,9 @@ browser.storage.local
   });
 
 browser.storage.onChanged.addListener((changes) => {
+  if (changes.blurAmount !== undefined) {
+    setThumbnailBlurAmount(changes.blurAmount.newValue);
+  }
   if (changes.blurEnabled !== undefined) {
     thumbnailBlur(changes.blurEnabled.newValue === true);
   }

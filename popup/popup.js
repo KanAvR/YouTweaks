@@ -1,5 +1,4 @@
 const toggles = [
-  { id: "blurToggle",                      key: "blurEnabled" },
   { id: "hideCreateButton",                key: "createHidden" },
   { id: "hideNotificationButton",          key: "notificationHidden" },
   { id: "hideMicButton",                   key: "micHidden" },
@@ -12,6 +11,29 @@ const toggles = [
   { id: "hideShorts",                      key: "shortsHidden" },
   { id: "hideGames",                       key: "gamesHidden" },
 ];
+
+const blurToggle = document.getElementById("blurToggle");
+const blurControls = document.getElementById("blurControls");
+const blurAmount = document.getElementById("blurAmount");
+const blurAmountValue = document.getElementById("blurAmountValue");
+
+browser.storage.local.get(["blurEnabled", "blurAmount"]).then((result) => {
+  blurToggle.checked = result.blurEnabled === true;
+  blurControls.classList.toggle("visible", blurToggle.checked);
+  blurAmount.value = Number.isFinite(result.blurAmount)
+    ? Math.min(30, Math.max(1, Math.round(result.blurAmount))) : 10;
+  blurAmountValue.value = `${blurAmount.value}px`;
+});
+
+blurToggle.addEventListener("change", () => {
+  blurControls.classList.toggle("visible", blurToggle.checked);
+  browser.storage.local.set({ blurEnabled: blurToggle.checked });
+});
+
+blurAmount.addEventListener("input", () => {
+  blurAmountValue.value = `${blurAmount.value}px`;
+  browser.storage.local.set({ blurAmount: Number(blurAmount.value) });
+});
 
 for (const { id, key } of toggles) {
   const el = document.getElementById(id);

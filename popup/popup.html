@@ -19,11 +19,16 @@
         <div class="tab-panel active" id="tab-removals">
             <div class="settings">
                 <div class="row">
-                    <span class="label">Blur thumbnails</span>
+                    <label class="label" for="blurToggle">Blur thumbnails</label>
                     <label class="switch">
                         <input type="checkbox" id="blurToggle" />
                         <span class="slider round"></span>
                     </label>
+                </div>
+                <div class="sub-row blur-controls" id="blurControls">
+                    <label for="blurAmount">Blur strength</label>
+                    <input type="range" id="blurAmount" min="1" max="30" step="1" value="10" />
+                    <output id="blurAmountValue" for="blurAmount">10px</output>
                 </div>
                 <div class="row">
                     <span class="label">Hide Create Button</span>

@@ -178,6 +178,22 @@ input:checked + .slider:before {
   display: flex;
 }
 
+.blur-controls {
+  color: #f5f5f5;
+  font-size: 12px;
+}
+
+.blur-controls input {
+  flex: 1;
+  min-width: 0;
+  accent-color: #3b82f6;
+}
+
+.blur-controls output {
+  min-width: 32px;
+  text-align: right;
+}
+
 .limit-inputs {
   display: flex;
   align-items: center;
