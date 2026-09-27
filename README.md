@@ -1,22 +1,18 @@
 <p align="center">
-  <img src="icons/youtweaks-banner-transparent.png" alt="YouTweaks" width="400" />
+  <img src="icons/youtweaks-banner-transparent.png" alt="YouTweaks" width="800" />
 </p>
 
-## Install
+## [Watch the v1.1 trailer](https://drive.google.com/file/d/1ig3-sloF9YI1WYN1jmgtXuIsBnVWo7h0/view?usp=sharing)
+
+# Install 
+
+## **Firefox:** [Add to Firefox](https://addons.mozilla.org/en-US/firefox/addon/youtweaks/)
 
 **Chrome / Edge / Brave:**
-1. Download [`youtweaks-v1.0.zip`](https://github.com/KanAvR/YouTweaks/releases/download/v1.0/youtweaks-v1.0.zip) from the latest release.
+1. Download [`youtweaks-v1.1.zip`](https://github.com/KanAvR/YouTweaks/releases/download/v1.1/youtweaks-v1.1.zip) from the latest release.
 2. Unzip the file.
 3. Go to `chrome://extensions` → enable **Developer mode** → click **Load unpacked** → select the unzipped folder.
 
-**Firefox:**
-[Add to Firefox](https://addons.mozilla.org/en-US/firefox/addon/youtweaks/)
-
-Extension isnt approved yet so the link wont work.
-
-To sideload:
-1. Download and unzip the release zip.
-2. Go to `about:debugging` → **Load Temporary Add-on…** → select `manifest.json`. The extension will stay active until you quit firefox 
 
 ## Features
 
@@ -59,5 +55,6 @@ To sideload:
 
 ## Acknowledgements
 
+- [Music from Apple 2019 event ](https://www.youtube.com/watch?v=3dyK9mjf_4g)
 - <img src="https://raw.githubusercontent.com/rose-pine/rose-pine-theme/main/assets/icon.png" width="16" height="16" align="absmiddle"> <a href="https://rosepinetheme.com/palette/">Rosé Pine</a>
 - <img src="https://raw.githubusercontent.com/catppuccin/catppuccin/main/assets/logos/exports/1544x1544_circle.png" width="16" height="16" align="absmiddle"> <a href="https://catppuccin.com/palette/">Catppuccin</a>
